@@ -1,6 +1,6 @@
 import { Stack, Link, Box } from "@mui/material";
 import Image from "next/image";
-import "./Header.css"
+import "./Frames.css"
 const navItems:Array<Array<string>>= [
   ["首页", ""],
   ["关于我们","about"],
@@ -21,7 +21,6 @@ export default function Header () {
         <Box key={i} component="span" className="link-box">
           <Link href={`#${item[1]}`} variant="subtitle2" underline="none" className="nav-link">{item[0]}</Link>
         </Box>
-
         )}
       </Stack>
       <Stack direction="row" alignItems="center" spacing={1}>
