@@ -20,24 +20,37 @@ const info = [
 
 
 export default function Footer () {
+  const handleClickPartner = () => {
+    //redirect to partner page
+    console.log('partner clicked')
+  }
+  const handleClickInfo = () => {
+    //redirect to partner page
+    console.log('info clicked')
+  }
+
   return (
     <div
       className="footer-container"
     >
-      <Grid xs={6} className="footer-grid" wrap='wrap'>
-        <Typography>合作伙伴</Typography>
-        <List>
+      <Grid
+      xs={6}
+      className="footer-grid" wrap='wrap'
+
+      >
+        <Typography onClick={handleClickPartner}>合作伙伴</Typography>
+        <List sx={{display: {xs:'none', md:'block'}}}>
           {partners.slice(0,5).map((company, i) =>
             <ListItem key={i} sx={{color:"primary.dark"}} disablePadding component="a" href={company.link}>
               {company.name}
             </ListItem>
           )}
-          {partners.length > 5 ? <Button sx={{color:"primary.dark"}} size="small">更多...</Button> : null}
+          {partners.length > 5 ? <Button sx={{color:"primary.dark"}} size="small" onClick={handleClickPartner}>更多...</Button> : null}
         </List>
       </Grid>
       <Grid xs={6} className="footer-grid" px={2} >
-        <Typography>联系信息</Typography>
-        <Stack className="info-stack">
+        <Typography onClick={ handleClickInfo }>联系信息</Typography>
+        <Stack className="info-stack" sx={{display: {xs:'none', md:'block'}}}>
           <Typography style={{fontSize:"small"}}>{info[0].name}: {info[0].value}</Typography>
           <Stack direction="row" flexWrap={"wrap"} spacing={2}>
             <Stack direction={"column"}>
