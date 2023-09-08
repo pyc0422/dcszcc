@@ -22,3 +22,14 @@
 .nav-link:active{
   font-weight: 600;
 }
+
+/* ------------ footer ------------ */
+.footer-container {
+  position:absolute;
+  display:flex;
+  justify-content: space-evenly;
+  background-color: gray;
+  bottom: 0;
+  min-width: 100vw;
+  height: 20vh;
+}
