@@ -21,17 +21,14 @@ const info = [
 
 export default function Footer () {
   return (
-    <Grid
-      container
-      spacing={2}
-      direction="row"
+    <div
       className="footer-container"
     >
-      <Grid xs={6} className="footer-grid">
+      <Grid xs={6} className="footer-grid" wrap='wrap'>
         <Typography>合作伙伴</Typography>
         <List>
           {partners.slice(0,5).map((company, i) =>
-            <ListItem key={i} className="parnter-li" disablePadding component="a" href={company.link}>
+            <ListItem key={i} sx={{color:"primary.dark"}} disablePadding component="a" href={company.link}>
               {company.name}
             </ListItem>
           )}
@@ -40,17 +37,20 @@ export default function Footer () {
       </Grid>
       <Grid xs={6} className="footer-grid" px={2} >
         <Typography>联系信息</Typography>
-        <Stack className='info-stack'>{info[0].name}: {info[0].value}</Stack>
-        <Stack direction="row" flexWrap={"wrap"}>
-          <Stack direction={"column"}>
-           {info.slice(1).map((item, i) =>
-            <Stack className='info-stack' key={i}>{item.name}: {item.value}</Stack>)}
-          </Stack>
-          <Image src="/wechat-qr.png" alt="wechat qr code" style={{padding: "0.3rem"}}width={100} height={100}/>
-      </Stack>
+        <Stack className="info-stack">
+          <Typography style={{fontSize:"small"}}>{info[0].name}: {info[0].value}</Typography>
+          <Stack direction="row" flexWrap={"wrap"} spacing={2}>
+            <Stack direction={"column"}>
+            {info.slice(1).map((item, i) =>
+              <Typography key={i} style={{fontSize:"small"}} component="span">{item.name}: {item.value}</Typography>)}
+            </Stack>
+            <Image src="/wechat-qr.png" alt="wechat qr code" width={100} height={100} style={{padding:"0.3rem"}}/>
+        </Stack>
+        </Stack>
+
 
 
       </Grid>
-    </Grid>
+    </div>
   )
 }
