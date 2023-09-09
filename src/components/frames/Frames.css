@@ -1,26 +1,15 @@
 
-
-/* .link-box{
-  display:block;
-  margin:0 1.5rem;
-  color: black;
-  text-align: center;
-}
-
-.link-box:hover {
-  background-color: rgba(247, 247, 248, 0.929);
-} */
-
 .link-box:active {
   background-color: rgba(237, 244, 253, 0.755);
 }
 
 .nav-link {
   color:#2a2a2b;
-  font-weight: 300;
+  font-weight: 400;
 }
 .nav-link:hover{
   font-weight: 800;
+  text-decoration: underline;
 }
 
 
