@@ -97,7 +97,7 @@ export default function Subscribe () {
            sx={{
             bgcolor:"primary.dark",
             margin:"1rem",
-            "&:hover":{color:'black !important'}
+            "&:hover":{color:'white !important'}
             }}
            onClick={handleSubscribe}
           >订阅资讯</Button>
