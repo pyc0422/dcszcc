@@ -17,16 +17,23 @@
 .footer-container {
   position:fixed;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem 4rem;
-  justify-content: space-around;
-  align-items: baseline;
+  /* justify-content: space-around;
+  align-items: baseline; */
   background-color: #D9D9D9;
   top:auto;
   bottom: 0;
   left:0;
   min-width: 100vw;
   min-height:fit-content;
+}
+.footer-main {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 4rem;
+  justify-content: space-around;
+  align-items: baseline;
 }
 @media (max-width:600px) {
   .footer-container {
