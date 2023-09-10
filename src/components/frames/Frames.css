@@ -54,6 +54,7 @@
 
 .MuiButtonBase-root:hover {
   color:#5db3fad0;
+
   background-color: transparent;
 }
 
@@ -61,4 +62,10 @@
   text-align: left;
   padding: 2px 2rem;
   font-size: small;
+}
+
+.footer-title {
+  color:#2a2a2b;
+  font-weight: 800;
+  text-decoration: none;
 }
