@@ -20,10 +20,10 @@ const headers = {"Content-Type": "application/json"}
 export async function addUser (email:string) {
   console.log('email in addUser:', email, SERVER_URL)
   try {
-    const res = await fetch(`${SERVER_URL}/api/users/`,{method:'POST', headers:{ "Content-Type": "application/json"}, body:email})
+    const res = await fetch(`${SERVER_URL}/api/users/`,{method:'POST', headers:{ "Content-Type": "application/json"}, body:JSON.stringify({email})})
     if (res) {console.log('res in api.ts', res)}
     return res.json()
   } catch(error) {
-
+    return error
   }
 }

@@ -1,19 +1,11 @@
-import { Stack, Typography, Button, Link, Box, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
+'use client'
+import { Stack, Typography, Button, Box, Link, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState} from 'react';
 import "./Frames.css"
-const navItems:Array<Array<string>>= [
-  ["首页", ""],
-  ["关于我们","about"],
-  ["新闻与活动","news"],
-  ["联系我们","contact"]
-]
-const socialItems = [
-  ["/WeChat.png", ""],
-  ["/FaceBook.png", ""],
-  ["/Twitter.png", ""]
-]
+import { navItems, socialItems } from "@/utility/data";
+
 export default function Header () {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
@@ -28,8 +20,8 @@ export default function Header () {
   return (
     <AppBar color="transparent" position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Image src="/logo.png" priority={false} alt="logo" width="300" height="40"/>
+        <Toolbar disableGutters sx={{margin:0}}>
+          <Image src="/logo.png" priority={false} alt="logo" width="380" height="50"/>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
             <IconButton
               size="large"
@@ -37,7 +29,7 @@ export default function Header () {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              sx={{color:"primary.dark"}}
+              sx={{color:"primary.dark !important"}}
             >
               <MenuIcon />
             </IconButton>
@@ -53,7 +45,7 @@ export default function Header () {
             >
               {navItems.map((item, i) =>
                 <MenuItem key={i} onClick={handleCloseNavMenu} sx={{padding:"0 auto"}}>
-                <Link href={`#${item[1]}`} variant="subtitle2" underline="none" className="nav-link">{item[0]}</Link>
+                <Link href={`/${item[1]}`} variant="subtitle2" underline="none" className="nav-link">{item[0]}</Link>
                 </MenuItem>
               )}
               <MenuItem>
@@ -69,12 +61,12 @@ export default function Header () {
             {navItems.map((item, i) =>
              <Button
               key={i}
-              href={`#${item[1]}`}
+              href={`/${item[1]}`}
               sx={{
-                "&:hover": {bgcolor:"#5bd3fa", color: 'black !important', fontWeight:800},
+                "&:hover": {bgcolor:"#9ac9f85f !important", fontWeight:800},
                 my: 2,
+                color:"#2b2b2b !important",
                 textAlign:"center",
-                color: 'primary.dark',
                 display: 'block'
               }}>
               {item[0]}

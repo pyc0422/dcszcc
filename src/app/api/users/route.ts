@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import firestore from '../../../../firebase';
 import { NextResponse } from "next/server";
 export async function GET (request: Request) {
@@ -15,11 +15,15 @@ export async function GET (request: Request) {
 
 export async function POST (request:Request) {
   try {
-    const email = await request.text();
-    console.log('body in post users:', email)
-    const res = await addDoc(collection(firestore,"users"), {email})
-    if (res) {
-      return NextResponse.json('sucess')
+    const body = await request.json();
+    console.log('body in post users:', body)
+    const ref = collection(firestore, "users")
+    const res = await getDocs(query(ref, where("email","==", body.email)))
+    if (res.size == 0) {
+      const add = await addDoc(ref, body)
+      return NextResponse.json('success')
+    } else {
+      return NextResponse.json({statusCode:400, message:"user exists"})
     }
   } catch(error){
     console.log('error in post user', error)
