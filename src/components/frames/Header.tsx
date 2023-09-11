@@ -1,5 +1,5 @@
 'use client'
-import { Stack, Typography, Button, Box, Link, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
+import { Stack,Button, Box, Link, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState} from 'react';
@@ -21,7 +21,7 @@ export default function Header () {
     <AppBar color="transparent" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{margin:0}}>
-          <Image src="/logo.png" priority={false} alt="logo" width="380" height="50"/>
+          <Image src="/logo.png" priority={false} alt="logo" width="300" height="40"/>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
             <IconButton
               size="large"

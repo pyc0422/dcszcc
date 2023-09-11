@@ -2,27 +2,9 @@ import Image from "next/image"
 import { useEffect, useState } from "react";
 import "./subscribe.css"
 import { Alert, Box, Button, Color, TextField, Typography } from "@mui/material"
-import { styled } from '@mui/material/styles';
-import { addUser } from "@/lib/api";
-const CssTextField = styled(TextField)({
-  '& label.Mui-focused': {
-    color: '#A0AAB4',
-  },
-  '& .MuiInput-underline:after': {
-    borderBottomColor: '#B2BAC2',
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#E0E3E7',
-    },
-    '&:hover fieldset': {
-      borderColor: '#B2BAC2',
-    },
-    '&.Mui-focused fieldset': {
-      borderColor: '#6F7E8C',
-    },
-  },
-});
+import { CssTextField } from "./CssTextField";
+import { addUser, sendWelcome } from "@/lib/api";
+
 import { useAppContext } from "@/components/AppContext";
 
 export default function Subscribe () {
@@ -46,11 +28,19 @@ export default function Subscribe () {
      .then((data) => {
       if (typeof data === 'string') {
         setEmail("")
-        setAlert({status:true, severity:"success", message:"Subsribe successfully"})
+        return sendWelcome(email)
       } else {
         setAlert ({status:true, severity:"warning", message:'Thank you. You already subscribed before'})
+        return 'warning'
       }
      })
+     .then((res) => {
+      if (res === 'warning') {
+        return
+      }
+      setAlert({status:true, severity:"success", message:"Subsribe successfully"})
+    })
+     .catch(err => console.error(err))
   }
   useEffect(() => {
     if (alert.status) {
@@ -58,7 +48,6 @@ export default function Subscribe () {
         setAlert({status:false, severity:"error", message:""})
       }, 2500)
     }
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [alert.status])
   return (
