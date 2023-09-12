@@ -4,7 +4,6 @@ import "./subscribe.css"
 import { Alert, Box, Button, Color, TextField, Typography } from "@mui/material"
 import { CssTextField } from "./CssTextField";
 import { addUser, sendWelcome } from "@/lib/api";
-
 import { useAppContext } from "@/components/AppContext";
 
 export default function Subscribe () {
@@ -93,7 +92,7 @@ export default function Subscribe () {
         </Box>
       </Box>
       <Box height={300} width={400} textAlign={"center"} p={2}>
-       <Image src="/01create.png" height={300} width={400} alt="create picture" />
+       <Image src="/01create.png" height={300} width={400} alt="create picture" style={{border:"0.5rem white solid"}}/>
       </Box>
 
     </section>
