@@ -1,18 +1,18 @@
 const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
 
-async function handleResponse<T>(response: Response): Promise<T> {
-  const contentType = response.headers.get("Content-Type") || "";
-  const isJson = contentType.includes("application/json");
-  const data = isJson ? await response.json() : await response.text();
-  if (!response.ok) {
-    const message = isJson
-      ? data.message || response.statusText
-      : response.statusText;
-    throw new Error(message);
-  }
+// async function handleResponse<T>(response: Response): Promise<T> {
+//   const contentType = response.headers.get("Content-Type") || "";
+//   const isJson = contentType.includes("application/json");
+//   const data = isJson ? await response.json() : await response.text();
+//   if (!response.ok) {
+//     const message = isJson
+//       ? data.message || response.statusText
+//       : response.statusText;
+//     throw new Error(message);
+//   }
 
-  return data as T;
-}
+//   return data as T;
+// }
 
 const headers = {"Content-Type": "application/json"}
 
@@ -35,6 +35,17 @@ export async function sendWelcome (email:string) {
       return res.json()
     }
   } catch (error) {
+    return error
+  }
+}
+
+export async function logIn (email:string, password: string) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/auth/login`, {method:'POST', headers, body:JSON.stringify({email, password})})
+    if (res) {
+      return res.json()
+    }
+  }catch(error) {
     return error
   }
 }
