@@ -8,6 +8,7 @@ import { partners, info } from '@/utility/data';
 export default function Footer () {
   return (
     <div className="footer-container">
+      <div className='footer-main'>
       <Grid xs={6} className="footer-grid" wrap='wrap'>
         <Typography component="a" href="/partner" className="footer-title">合作伙伴</Typography>
         <List sx={{display: {xs:'none', md:'block'}}}>
@@ -34,6 +35,12 @@ export default function Footer () {
         </Stack>
         </Stack>
       </Grid>
+      </div>
+      <div style={{textAlign:"center", width:"100%", position:"fixed", bottom:0}}>
+        <Typography variant="caption" sx={{color: "#2b2b2ba4", fontWeight: 100}}>
+        &copy; 2023 SZCC
+        </Typography>
+      </div>
     </div>
   )
 }
