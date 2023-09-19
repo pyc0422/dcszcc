@@ -49,3 +49,14 @@ export async function logIn (email:string, password: string) {
     return error
   }
 }
+
+export async function logOut () {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/auth/logout`, {headers})
+    if (res.status === 200) {
+      return 'logout'
+    }
+  } catch(error) {
+    throw error
+  }
+}

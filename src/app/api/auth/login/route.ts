@@ -11,16 +11,9 @@ export async function POST (request:Request) {
     if (credential) {
       const user = credential.user;
       const token = await user.getIdTokenResult()
-      const expiresIn = 60 * 60 * 24 * 5 * 1000;
-      const options = {
-        name: "session",
-        value: token.token,
-        maxAge: expiresIn,
-        httpOnly: true,
-        secure: true,
-      };
+      const expiresIn = 60 * 60 * 1 * 1000;
       //Add the cookie to the browser
-      cookies().set(options);
+      cookies().set('session', token.token, { maxAge: expiresIn, secure: true},);
       return NextResponse.json('success')
     }
   } catch(error) {
@@ -44,6 +37,8 @@ export async function GET(request: NextRequest) {
   }
   const curUser = await auth.currentUser?.getIdToken();
   if (curUser !== session) {
+    console.log('curr', curUser)
+    console.log('not equale')
     return NextResponse.json({ isLogged: false }, { status: 401 });
   }
   return NextResponse.json({ isLogged: true }, { status: 200 });

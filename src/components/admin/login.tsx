@@ -26,7 +26,7 @@ export default function Login() {
       console.log('res login fe:', res)
       if (res === 'success') {
         console.log(admin)
-        route.push('/admin/protected/edit')
+        route.push('/admin/edit')
         setAdmin({email:"", pw:""})
       }
     }
