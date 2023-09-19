@@ -12,14 +12,6 @@ export async function POST (request:Request) {
       const user = credential.user;
       const token = await user.getIdTokenResult()
       const expiresIn = 60 * 60 * 1 * 1000;
-      const options = {
-        name: "session",
-        value: token.token,
-        expires: expiresIn,
-        httpOnly: true,
-        path:'/admin',
-        secure: true,
-      };
       //Add the cookie to the browser
       cookies().set('session', token.token, { maxAge: expiresIn, secure: true},);
       return NextResponse.json('success')
