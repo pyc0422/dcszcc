@@ -1,8 +1,6 @@
 import Image from "next/image"
 import { useEffect, useState } from "react";
-import "./subscribe.css"
-import { Alert, Box, Button, Color, TextField, Typography } from "@mui/material"
-import { CssTextField } from "./CssTextField";
+import { Alert, Button } from "@mui/material"
 import { addUser, sendWelcome } from "@/lib/api";
 import { useAppContext } from "@/components/AppContext";
 
@@ -51,22 +49,18 @@ export default function Subscribe () {
   }, [alert.status])
   return (
     <section id="homepage">
-      <Box p={2}>
-        <Typography variant="h4" color="white" sx={{fontWeight:'800'}} component={"h1"}>大华府地区中国深圳商会</Typography>
-        <Typography variant="caption" color="white" py={1} sx={{fontWeight:'500'}} component={"p"}>欢迎订阅了解最新活动及资讯</Typography>
+      <div className="p-2">
+        <h1 className="font-medium text-white text-4xl">大华府地区中国深圳商会</h1>
+        <p className="text-white font-light text-xs pt-2"> 欢迎订阅了解最新活动及资讯</p>
         {alert.status ? <Alert severity={alert.severity} onClose={() => setAlert({...alert, status:false})}>{alert.message}</Alert> : null}
-        <CssTextField
-         variant="outlined"
-         fullWidth
-         name="email"
-         placeholder="Email"
-         size="small"
-         required
-         margin="normal"
-         value={email}
-         onChange={handleEmail}
-         />
-        <Box display={"flex"}>
+        <input
+          name="email"
+          placeholder="输入您的邮箱进行订阅"
+          value={email}
+          onChange={handleEmail}
+          className="px-4 py-1 font-extralight h-10 w-full bg-transparent border border-slate-50 mt-4"
+        />
+        <div className="flex flex-row justify-between">
           <Button
             variant="outlined"
             fullWidth
@@ -80,20 +74,20 @@ export default function Subscribe () {
               },
             }}>了解更多</Button>
           <Button
-          fullWidth
+           fullWidth
            variant="contained"
            sx={{
-            bgcolor:"primary.dark",
             margin:"1rem",
+            bgcolor:"#2a2a2b !important",
             "&:hover":{color:'white !important'}
             }}
            onClick={handleSubscribe}
           >订阅资讯</Button>
-        </Box>
-      </Box>
-      <Box height={300} width={400} textAlign={"center"} p={2}>
-       <Image src="/01create.png" height={300} width={400} alt="create picture" style={{border:"0.5rem white solid"}}/>
-      </Box>
+        </div>
+      </div>
+      <div className="flex justify-center items-center">
+       <Image src="/01create.png" height={300} width={400} alt="create picture" className="shadow-md h-3/4 w-3/4 border-2 border-white"/>
+      </div>
 
     </section>
   )

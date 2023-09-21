@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .link-box:active {
   background-color: rgba(237, 244, 253, 0.755);
@@ -14,18 +17,7 @@
 
 
 /* ------------ footer ------------ */
-.footer-container {
-  position:fixed;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 4rem;
-  background-color: #D9D9D9;
-  top:auto;
-  bottom: 0;
-  left:0;
-  min-width: 100vw;
-  min-height:fit-content;
-}
+
 .footer-main {
   display: flex;
   flex-direction: row;
@@ -39,7 +31,12 @@
     padding:1rem
   }
 }
+@layer components {
+  .footer-grid {
+    @apply flex flex-col flex-wrap justify-center items-center p-1
+  }
 
+}
 .footer-grid {
   text-align: center;
   display: flex;
