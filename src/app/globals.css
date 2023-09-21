@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -104,4 +109,41 @@ body {
   html {
     color-scheme: light;
   }
+}
+#homepage {
+  left:0;
+  font: 'Roboto Mono';
+  background-color: rgba(103, 102, 102, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 3rem;
+  height: 40vh;
+  min-height: max-content;
+}
+@media (max-width:900px) {
+  #homepage {
+    flex-direction: column;
+    height:max-content
+  }
+}
+
+@layer base {
+  input {
+    @apply font-light shadow border rounded w-full py-2 px-3 text-gray-700 text-sm font-light leading-tight active:ring-offset-2 hover:opacity-60 focus:ring-2 focus:ring-slate-700
+  }
+  label {
+    @apply block text-sm text-left mb-2 text-slate-800 font-light
+  }
+  button {
+    @apply shadow-md py-2 px-4 rounded text-sm hover:opacity-80 active:opacity-100 focus:bg-blend-darken
+  }
+}
+
+@layer utilities {
+  .flex-row-center {
+    @apply flex flex-row justify-center items-center
+  }
+
 }

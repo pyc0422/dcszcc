@@ -11,9 +11,10 @@ export async function POST (request:Request) {
     if (credential) {
       const user = credential.user;
       const token = await user.getIdTokenResult()
-      const expiresIn = 60 * 60 * 1 * 1000;
+      // console.log('token:', token.token)
+      const expiresIn = 60 * 60 * 2;
       //Add the cookie to the browser
-      cookies().set('session', token.token, { maxAge: expiresIn, secure: true},);
+      cookies().set('session', token.token, { maxAge: expiresIn, secure: true, httpOnly:true},);
       return NextResponse.json('success')
     }
   } catch(error) {
