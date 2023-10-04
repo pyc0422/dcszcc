@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .link-box:active {
   background-color: rgba(237, 244, 253, 0.755);
@@ -14,26 +17,26 @@
 
 
 /* ------------ footer ------------ */
-.footer-container {
-  position:fixed;
+
+.footer-main {
   display: flex;
   flex-direction: row;
   padding: 1rem 4rem;
   justify-content: space-around;
   align-items: baseline;
-  background-color: #D9D9D9;
-  top:auto;
-  bottom: 0;
-  left:0;
-  min-width: 100vw;
-  min-height:fit-content;
 }
+
 @media (max-width:600px) {
   .footer-container {
     padding:1rem
   }
 }
+@layer components {
+  .footer-grid {
+    @apply flex flex-col flex-wrap justify-center items-center p-1
+  }
 
+}
 .footer-grid {
   text-align: center;
   display: flex;
@@ -43,13 +46,14 @@
   padding-bottom: 1rem;
 }
 
+
 .MuiListItem-root  {
   font-size: small;
   justify-content: center;
 }
 
 .MuiListItem-root:hover {
-  color:rgba(225, 225, 225, 0.888)
+  text-shadow:1px 1px 3px #5db3fa5d;
 }
 
 .MuiButtonBase-root:hover {

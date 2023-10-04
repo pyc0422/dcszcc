@@ -1,5 +1,5 @@
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import firestore from '../../../../../firebase';
+import { firestore } from '../../../../../firebase';
 import { NextResponse } from "next/server";
 export async function GET (request: Request,  { params }: { params: { news_id: string } }) {
   //return all news data from database
