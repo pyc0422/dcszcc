@@ -1,4 +1,5 @@
-import { Box,Button, FormControl, InputLabel, InputBase } from "@mui/material"
+import { Button } from "@mui/material"
+import React from "react"
 export default function Post () {
   return (
     <div className="flex flex-col justify-center items-center border">
