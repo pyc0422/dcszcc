@@ -1,8 +1,8 @@
 "use client"
-import { useState } from "react";
+import React, { useState } from "react";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { logIn } from "@/lib/api";
+import { logIn } from "../../lib/api";
 import { useRouter } from "next/navigation";
 export default function Login() {
   const [admin, setAdmin] = useState<Record<string, string>>({email:"", pw:""})
