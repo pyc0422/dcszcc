@@ -1,6 +1,7 @@
 import { Button } from "@mui/material"
+import dynamic from 'next/dynamic'
 import React from "react"
-import ReactQuill from "react-quill"
+const ReactQuill = dynamic(import('react-quill'), { ssr: false})
 import 'react-quill/dist/quill.snow.css'
 import "./admin.css"
 
