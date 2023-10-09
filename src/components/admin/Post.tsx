@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import dynamic from 'next/dynamic'
 import React from "react"
-const ReactQuill = dynamic(import('react-quill'), { ssr: false})
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false})
 import 'react-quill/dist/quill.snow.css'
 import "./admin.css"
 
@@ -21,26 +21,36 @@ export default function Post () {
           <label>标签： </label>
           <input type="text" placeholder="标签用空格隔开" className="post_input"/>
         </div>
+        {['import', 'email'].map((elem, i) => {
+          return (
+          <div key = {i}>
+            <div className="input_box mb-1">
 
-        <div className="input_box mb-1">
-          <label className="flex-center">是否标记为重要事件: </label>
-          {['yes', 'no'].map((b, i) =>
-            <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
-              <input id={b === 'yes'? "important" : "noimportant"} type="radio" value={b} />
-              <label htmlFor={b === 'yes'? "important" : "noimportant"} className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
-            </div>
-          )}
-        </div>
-        <p className="text-xs mb-4">*重要事件会显示在“关于我们”的时间轴上</p>
-        <div className="input_box">
+            <label className="flex-center">{elem === 'import' ? '是否标记为重要事件' :'是否群发'}</label>
+            {['yes', 'no'].map((b, i) =>
+              <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
+                <input id={b === 'yes'? "important" : "noimportant"} type="radio" value={b} className="shadow-none"/>
+                <label htmlFor={b === 'yes'? "important" : "noimportant"} className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
+              </div>
+            )}
+
+          </div>
+          {elem === 'import' ?
+          <p className="text-xs mb-4">*重要事件会显示在“关于我们”的时间轴上</p>
+         :null
+         }</div>
+          )
+          })}
+
+        {/* <div className="input_box">
           <label className="flex-center">是否群发: </label>
           {['yes', 'no'].map((b, i) =>
-            <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
-              <input id={b === 'yes'? "emailAll" : "noEmail"} type="radio" value={b} />
-              <label htmlFor={b === 'yes'? "emailAll" : "noEmail"} className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
+            <div key={i} className="flex-center flex-row ml-2 cursor-pointer ">
+              <input id={b === 'yes'? "emailAll" : "noEmail"} type="radio" value={b} className="shadow-none"/>
+              <label htmlFor={b === 'yes'? "emailAll" : "noEmail"} className="m-1">{b === 'yes' ? '是' : '否'}</label>
             </div>
           )}
-        </div>
+        </div> */}
         <div className="input_box">
           <label>上传图片： </label>
           <input type="file" placeholder="请选择文件" className="post_input"/>
