@@ -101,17 +101,17 @@ export default function Post () {
           <input type="file" placeholder="请选择文件" className="post_input"/>
         </div> */}
         <ReactQuill
-          theme="snow"
+          // theme="snow"
           className="h-80 mt-4 mb-10 w-full"
           value={quillInput}
           onChange={handleChange}
           modules={modules}
           formats={formats}
         />
-          <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
-           <Button type="submit" variant="outlined" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>发布</Button>
-           <Button type="reset" variant="contained" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>重置</Button>
-          </div>
+        <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
+          <Button type="submit" variant="outlined" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>发布</Button>
+          <Button type="reset" variant="contained" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>重置</Button>
+        </div>
       </form>
 
 
