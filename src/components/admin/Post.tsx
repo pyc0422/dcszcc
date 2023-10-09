@@ -1,10 +1,47 @@
 import { Button } from "@mui/material"
-import dynamic from 'next/dynamic'
 import React from "react"
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false})
-import 'react-quill/dist/quill.snow.css'
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import 'react-quill/dist/quill.snow.css';
 import "./admin.css"
 
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+]
+const modules = {
+  toolbar: [
+    [{ 'header': '1' }, { 'header': '2' }],
+    [{ 'size': [] }],
+    [{ 'color': [] }, { 'background': [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { 'list': 'ordered' },
+      { 'list': 'bullet' },
+      { 'indent': '-1' },
+      {'indent': '+1' },
+    ],
+    [{ 'direction': 'rtl' }, { 'align': [] }],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
 export default function Post () {
   return (
     <div className="flex flex-col justify-center items-center">
@@ -21,28 +58,17 @@ export default function Post () {
           <label>标签： </label>
           <input type="text" placeholder="标签用空格隔开" className="post_input"/>
         </div>
-        {['import', 'email'].map((elem, i) => {
-          return (
-          <div key = {i}>
-            <div className="input_box mb-1">
-
-            <label className="flex-center">{elem === 'import' ? '是否标记为重要事件' :'是否群发'}</label>
+            <div className="input_box mb-0">
+            <label className="flex-center">是否标记为重要事件: </label>
             {['yes', 'no'].map((b, i) =>
               <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
                 <input id={b === 'yes'? "important" : "noimportant"} type="radio" value={b} className="shadow-none"/>
                 <label htmlFor={b === 'yes'? "important" : "noimportant"} className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
               </div>
             )}
-
           </div>
-          {elem === 'import' ?
           <p className="text-xs mb-4">*重要事件会显示在“关于我们”的时间轴上</p>
-         :null
-         }</div>
-          )
-          })}
-
-        {/* <div className="input_box">
+        <div className="input_box">
           <label className="flex-center">是否群发: </label>
           {['yes', 'no'].map((b, i) =>
             <div key={i} className="flex-center flex-row ml-2 cursor-pointer ">
@@ -50,12 +76,17 @@ export default function Post () {
               <label htmlFor={b === 'yes'? "emailAll" : "noEmail"} className="m-1">{b === 'yes' ? '是' : '否'}</label>
             </div>
           )}
-        </div> */}
+        </div>
         <div className="input_box">
           <label>上传图片： </label>
           <input type="file" placeholder="请选择文件" className="post_input"/>
         </div>
-        <ReactQuill theme="snow" className="h-80 mt-4 mb-10 w-full"/>
+        <ReactQuill
+          theme="snow"
+          className="h-80 mt-4 mb-10 w-full"
+          modules={modules}
+          formats={formats}
+        />
       </form>
           <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
            <Button type="submit" variant="outlined" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>发布</Button>
