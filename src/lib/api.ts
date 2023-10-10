@@ -66,7 +66,7 @@ export async function logOut () {
 export async function addNews (new_news:NewsType) {
   try {
     console.log('addNews:', new_news)
-    const res = await fetch(`${SERVER_URL}/api/news`, {method:'POST', headers,body:JSON.stringify(new_news)})
+    const res = await fetch(`${SERVER_URL}/api/news/all`, {method:'POST', headers, body:JSON.stringify(new_news)})
     if (res) {
       return res.json()
     }
