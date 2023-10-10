@@ -16,7 +16,11 @@ export async function GET (request: Request,  { params }: { params: { news_id: s
   }
 }
 
-export async function POST (request:Request) {
-  // for admin endpoint
-  return NextResponse.json('post is not completed')
-}
+// export async function POST (request:Request) {
+//   // for admin endpoint
+//   console.log('rrr in post:', request)
+//   const body = await request.json()
+//   console.log('post news data:', body)
+
+//   return NextResponse.json({body})
+// }

@@ -6,6 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import "./admin.css"
 import {useForm, SubmitHandler} from 'react-hook-form';
 import { NewsType } from "@/utility/types";
+import { addNews } from "@/lib/api";
 const formats = [
   'header',
   'size',
@@ -53,13 +54,14 @@ export default function Post () {
     register("content", { required: true })
   }, [register])
 
-  const handleChange = (quillInput:string) => {
+  const handleChange = (quillInput:string, delta, source, editor) => {
+    console.log('other',delta)
     setValue("content", quillInput)
   }
 
   const onSubmit:SubmitHandler<NewsType> = (data) => {
-    console.log('post data:', data)
-
+    console.log('post data:', data, data.content)
+    return addNews(data)
   }
   const quillInput = watch("content");
   return (
@@ -96,12 +98,8 @@ export default function Post () {
             </div>
           )}
         </div>
-        {/* <div className="input_box">
-          <label>上传图片： </label>
-          <input type="file" placeholder="请选择文件" className="post_input"/>
-        </div> */}
         <ReactQuill
-          // theme="snow"
+          theme="snow"
           className="h-80 mt-4 mb-10 w-full"
           value={quillInput}
           onChange={handleChange}

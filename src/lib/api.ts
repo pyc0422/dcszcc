@@ -1,3 +1,5 @@
+import { NewsType } from "@/utility/types";
+
 const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
 
 // async function handleResponse<T>(response: Response): Promise<T> {
@@ -58,5 +60,17 @@ export async function logOut () {
     }
   } catch(error) {
     throw error
+  }
+}
+
+export async function addNews (new_news:NewsType) {
+  try {
+    console.log('addNews:', new_news)
+    const res = await fetch(`${SERVER_URL}/api/news`, {method:'POST', headers,body:JSON.stringify(new_news)})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
   }
 }
