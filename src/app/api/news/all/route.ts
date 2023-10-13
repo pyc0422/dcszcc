@@ -1,4 +1,6 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+
+import {addDoc, collection, getDocs, Timestamp} from "firebase/firestore";
+
 import { firestore } from '../../../../../firebase';
 import { NextResponse } from "next/server";
 export async function GET (request: Request) {
@@ -15,9 +17,13 @@ export async function GET (request: Request) {
 
 export async function POST (request:Request) {
   // for admin endpoint
-  console.log('rrr in post:', request)
-  const body = await request.json()
-  console.log('post news data:', body)
 
-  return NextResponse.json({body})
+  try {
+    const body = await request.json()
+    body.created_time = Timestamp.fromDate(new Date())
+    await addDoc(collection(firestore, "news"), body)
+    return NextResponse.json('added')
+  } catch(error) {
+    return NextResponse.json(error)
+  }
 }

@@ -4,11 +4,13 @@ export type AlertType =  {status: boolean; severity: 'error' | 'info' | 'success
 
 export type NewsType = {
   title:string;
+  tags?:string | Array<string>;
   news_date:string;
-  important:boolean;
+  important:boolean | string;
   bref?:string;
   content:string;
-  notified:boolean;
+  notified:boolean | string;
   created_time?:Timestamp;
   last_update_time?:Timestamp;
+  author?:string
 }

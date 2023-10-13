@@ -15,12 +15,3 @@ export async function GET (request: Request,  { params }: { params: { news_id: s
     return NextResponse.json(error)
   }
 }
-
-// export async function POST (request:Request) {
-//   // for admin endpoint
-//   console.log('rrr in post:', request)
-//   const body = await request.json()
-//   console.log('post news data:', body)
-
-//   return NextResponse.json({body})
-// }

@@ -48,20 +48,28 @@ const modules = {
   },
 };
 export default function Post () {
-  const defaultPost = {title:"", news_date:"", tags:[], important:false, notified:false, content:""}
-  const {register, handleSubmit, setValue, watch, formState:{errors}} = useForm({defaultValues: defaultPost})
+  const defaultPost = {title:"", news_date:"", important:false, notified:false, content:""}
+  const {register, handleSubmit, reset, setValue, watch, formState:{errors}} = useForm({defaultValues: defaultPost})
   useEffect(() => {
     register("content", { required: true })
   }, [register])
 
-  const handleChange = (quillInput:string, delta, source, editor) => {
-    console.log('other',delta)
+  const handleChange = (quillInput:string) => {
     setValue("content", quillInput)
   }
 
   const onSubmit:SubmitHandler<NewsType> = (data) => {
-    console.log('post data:', data, data.content)
+    console.log('post data:', data)
+    data.important = data.important === 'yes' ? true : false;
+    data.notified = data.notified === 'yes' ? true : false;
+    data.author = 'admin'
     return addNews(data)
+     .then(res => {
+      if (res === 'added') {
+        reset()
+        alert('发布成功！')
+      }
+     })
   }
   const quillInput = watch("content");
   return (
@@ -75,26 +83,26 @@ export default function Post () {
           <label>新闻日期：</label>
           <input type="date" className="post_input" {...register("news_date")}/>
         </div>
-        <div className="input_box">
+        {/* <div className="input_box">
           <label>标签： </label>
           <input type="text" placeholder="标签用空格隔开" className="post_input"/>
+        </div> */}
+        <div className="input_box mb-0">
+        <label className="flex-center">是否标记为重要事件: </label>
+          {['yes', 'no'].map((b, i) =>
+            <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
+              <input id={b === 'yes'? "important" : "noimportant"} type="radio" value={b} className="shadow-none" {...register("important")}/>
+              <label className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
+            </div>
+          )}
         </div>
-            <div className="input_box mb-0">
-            <label className="flex-center">是否标记为重要事件: </label>
-            {['yes', 'no'].map((b, i) =>
-              <div key={i} className="flex-center flex-row ml-2 cursor-pointer">
-                <input id={b === 'yes'? "important" : "noimportant"} type="radio" value={b} className="shadow-none" {...register("important")}/>
-                <label htmlFor={b === 'yes'? "important" : "noimportant"} className="m-1 ">{b === 'yes' ? '是' : '否'}</label>
-              </div>
-            )}
-          </div>
-          <p className="text-xs mb-4">*重要事件会显示在“关于我们”的时间轴上</p>
+        <p className="text-xs mb-4">*重要事件会显示在“关于我们”的时间轴上</p>
         <div className="input_box">
           <label className="flex-center">是否群发: </label>
           {['yes', 'no'].map((b, i) =>
             <div key={i} className="flex-center flex-row ml-2 cursor-pointer ">
               <input id={b === 'yes'? "emailAll" : "noEmail"} type="radio" value={b} className="shadow-none" {...register("notified")}/>
-              <label htmlFor={b === 'yes'? "emailAll" : "noEmail"} className="m-1">{b === 'yes' ? '是' : '否'}</label>
+              <label className="m-1">{b === 'yes' ? '是' : '否'}</label>
             </div>
           )}
         </div>
