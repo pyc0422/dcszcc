@@ -6,10 +6,7 @@ type StateType = {
   alert: AlertType;
   setAlert(alert: AlertType): void;
 };
-// const initialState = {
-//   alert:{ status:false, severity: "error", message:"" },
-//   setAlert: () => {}
-// }
+
 export const AppContext = createContext<StateType>({
   alert:{ status:false, severity: "error", message:"" },
   setAlert: () => {}

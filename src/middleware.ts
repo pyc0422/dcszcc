@@ -21,13 +21,13 @@ export async function middleware(request: NextRequest) {
   if (responseAPI.status !== 200 && path !== '/admin') {
     return NextResponse.redirect(new URL("/admin", request.url));
   }
-  if (responseAPI.status === 200 && path === '/admin') {
-    return NextResponse.redirect(new URL("/admin/edit", request.url))
-  }
+  // if (responseAPI.status === 200) {
+  //   return NextResponse.redirect(new URL("/admin/edit", request.url))
+  // }
   return NextResponse.next();
 }
 
 //Add your protected routes
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin"],
 };
