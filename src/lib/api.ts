@@ -74,3 +74,25 @@ export async function addNews (new_news:NewsType) {
     return error
   }
 }
+
+export async function getAllNews () {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/news/all`, {headers})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
+  }
+}
+
+export async function getOneNews (news_id:string) {
+  try {
+    const res = await(fetch(`${SERVER_URL}/api/news/${news_id}`, {headers}))
+    if (res) {
+      return res.json()
+    }
+  }catch(error) {
+    return error
+  }
+}

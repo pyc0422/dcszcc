@@ -9,7 +9,7 @@ export type NewsType = {
   important:boolean | string;
   bref?:string;
   content:string;
-  notified:boolean | string;
+  notified?:boolean | string;
   created_time?:Timestamp;
   last_update_time?:Timestamp;
   author?:string
