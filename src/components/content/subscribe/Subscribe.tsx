@@ -70,7 +70,7 @@ export default function Subscribe () {
               margin:"1rem",
               "&:hover":{
                 color:"black !important",
-                borderColor:"primary.dark",
+                borderColor:"#101a30",
               },
             }}>了解更多</Button>
           <Button

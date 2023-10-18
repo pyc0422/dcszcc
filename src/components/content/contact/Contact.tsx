@@ -1,9 +1,6 @@
 import "./contact.css"
 import Typography from '@mui/material/Typography';
 import emailjs from '@emailjs/browser';
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
-import Image from "next/image"
 import React, { useState } from "react"
 
 

@@ -8,7 +8,6 @@ export async function GET (request: Request) {
   try {
     const q = await getDocs(collection(firestore, "news"));
     const data = q.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-    console.log('data in handler', data)
     return NextResponse.json({data})
   } catch(error) {
     return NextResponse.json(error)

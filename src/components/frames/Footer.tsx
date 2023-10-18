@@ -6,7 +6,7 @@ import { partners, info } from '../../utility/data';
 
 export default function Footer () {
   return (
-    <div className="fixed flex flex-col bg-[#D9D9D9] bottom-0 left-0 w-screen min-h-fit">
+    <div className="absolute flex flex-col bg-[#D9D9D9] bottom-0 left-0 w-screen min-h-fit">
       <div className='flex flex-row px-4 py-8 justify-around items-start'>
       <div className="footer-grid">
         <Typography component="a" href="/partner" className="footer-title">合作伙伴</Typography>
@@ -17,7 +17,7 @@ export default function Footer () {
             </li>
           )}
           {partners.length > 5 ?
-          <Button sx={{color:"primary.dark", fontWeight:500}} size="small" href='/partner'>更多...</Button>
+          <Button sx={{color:"#101a30", fontWeight:500}} size="small" href='/partner'>更多...</Button>
            : null}
         </List>
       </div>

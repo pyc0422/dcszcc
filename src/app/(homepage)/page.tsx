@@ -1,32 +1,23 @@
 "use client"
 import React from 'react'
 import Footer from '../../components/frames/Footer';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { blue, grey } from '@mui/material/colors';
 import Subscribe from '../../components/content/subscribe/Subscribe';
 import About from '../../components/content/about/About';
 import News from '../../components/content/news/News';
 import Contact from '../../components/content/contact/Contact';
-const theme = createTheme({
-  palette: {
-    primary: {
-      main:blue[500],
-      light: blue[100],
-      dark:grey[900]
-    },
-  },
-});
 
-export default function Dashboard() {
+export default function Page() {
+
   return (
-    <ThemeProvider theme={theme}>
     <div>
+     <div>
       <Subscribe />
       <About />
       <News />
       <Contact />
+      </div>
       <Footer/>
     </div>
-    </ThemeProvider>
+
   )
 }

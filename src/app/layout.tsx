@@ -22,6 +22,7 @@ export default function RootLayout({
       <AppWrapper>
         {children}
       </AppWrapper>
+
     </body>
     </html>
   )
