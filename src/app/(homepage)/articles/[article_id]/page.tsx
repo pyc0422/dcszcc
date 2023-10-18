@@ -2,13 +2,12 @@
 import { getOneNews } from "@/lib/api"
 import { NewsType } from "@/utility/types"
 import { Timestamp } from "firebase/firestore"
+import { convertTimestamp } from "@/utility/functions"
 import React, { useEffect, useState } from "react"
 export default function SingleNews ({ params }: { params: { article_id: string } }) {
   const [article, setArticle] = useState<NewsType>({title:'', news_date:'', important:false,content:'', author:'', created_time: null})
   const [isScrolled, setScrolled] = useState(false)
-  function convertTimestamp(time:Timestamp) {
-    return new Date(time.seconds * 1000).toDateString()
-  }
+
   const toggleScrolled = () => {
     document.body.scrollTop > 200 ? setScrolled(true) :setScrolled(false)
   }

@@ -10,12 +10,12 @@ export default function Page() {
 
   return (
     <div>
-     <div>
-      <Subscribe />
-      <About />
-      <News />
-      <Contact />
-      </div>
+
+        <Subscribe />
+        <About />
+        <News />
+        <Contact />
+
       <Footer/>
     </div>
 
