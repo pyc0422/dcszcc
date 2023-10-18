@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 var nodemailer = require("nodemailer");
 const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
 

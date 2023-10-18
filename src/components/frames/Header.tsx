@@ -19,7 +19,7 @@ export default function Header () {
 
   return (
     <AppBar color="transparent" position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" id="header">
         <Toolbar disableGutters sx={{margin:0}}>
           <Image src="/logo.png" priority={false} alt="logo" width="300" height="40"/>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
