@@ -1,12 +1,19 @@
+
 import { Button } from "@mui/material"
 import React, {useEffect} from "react"
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 import 'react-quill/dist/quill.snow.css';
 import "./admin.css"
 import {useForm, SubmitHandler} from 'react-hook-form';
 import { NewsType } from "@/utility/types";
 import { addNews } from "@/lib/api";
+
+// import { ImageResize } from 'quill-image-resize-module-ts';
+
+// Quill.register('modules/imageResize', ImageResize);
+
 const formats = [
   'header',
   'size',
@@ -108,7 +115,7 @@ export default function Post () {
         </div>
         <ReactQuill
           theme="snow"
-          className="h-80 mt-4 mb-10 w-full"
+          className="h-96 mt-4 mb-10 w-full"
           value={quillInput}
           onChange={handleChange}
           modules={modules}

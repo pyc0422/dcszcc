@@ -122,6 +122,7 @@ body {
   height: 40vh;
   min-height: max-content;
 }
+
 @media (max-width:900px) {
   #homepage {
     flex-direction: column;
