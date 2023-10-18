@@ -27,3 +27,9 @@ export async function sendMail(subject:string, toEmail:string, otpText:string, h
     }
   });
 }
+
+
+// export function convertTimestamp(time:Timestamp) {
+//   const date = new Date(time.seconds * 1000)
+//   return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear()
+// }

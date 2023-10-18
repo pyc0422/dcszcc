@@ -64,6 +64,7 @@ export default function Subscribe () {
           <Button
             variant="outlined"
             fullWidth
+            href="/about"
             sx={{
               color:"white",
               borderColor:"white",
