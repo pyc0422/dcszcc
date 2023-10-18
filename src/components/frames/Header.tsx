@@ -21,7 +21,7 @@ export default function Header () {
     <AppBar color="transparent" position="static">
       <Container maxWidth="xl" id="header">
         <Toolbar disableGutters sx={{margin:0}}>
-          <Image src="/logo.png" priority={false} alt="logo" width="300" height="40"/>
+          <Image src="/logo.png" priority alt="logo" width="300" height="40"/>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
             <IconButton
               size="large"
@@ -50,15 +50,15 @@ export default function Header () {
               )}
               <MenuItem>
                 {socialItems.map((item, i) =>
-                  <Link key={i} href={item[1]}>
-                     <Image src={item[0]} alt={item[0]+"link"} width="20" height="20" style={{objectFit: "cover"}}/>
-                  </Link>
+                  <a key={i} href={item[1]} className="mx-[0.3]">
+                     <Image src={item[0]} alt={item[0]+"link"} width={20} height={20}/>
+                  </a>
                 )}
               </MenuItem>
             </Menu>
           </Box>
-          <Box sx={{ justifyContent:"center", flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {navItems.map((item, i) =>
+          <div className="flex-grow hidden md:flex justify-center">
+          {navItems.map((item, i) =>
              <Button
               key={i}
               href={`/${item[1]}`}
@@ -72,14 +72,14 @@ export default function Header () {
               {item[0]}
             </Button>
             )}
-          </Box>
-          <Stack direction="row" alignItems="center" spacing={1} sx={{display: {xs: 'none', md:'flex'}}}>
-          {socialItems.map((item, i) =>
-            <Link key={i} href={item[1]} mx={1}>
-              <Image src={item[0]} alt={item[0]+"link"} width="25" height="25" style={{objectFit: "cover"}}/>
-            </Link>
-          )}
-          </Stack>
+          </div>
+          <div className="hidden md:flex flex-row justify-between items-center h-full ">
+            {socialItems.map((item, i) =>
+              <a key={i} href={item[1]} className="mx-1">
+                <Image src={item[0]} alt={item[0]+"link"} width={25} height={25}/>
+              </a>
+            )}
+          </div>
         </Toolbar>
       </Container>
     </AppBar>
