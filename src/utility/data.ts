@@ -25,12 +25,20 @@ export const info = [
   {name: "微信", value:"690238933"}
 ]
 
-export const mission = [
-  {name:'misson', value:'We aim to build a platform for friendly exchanges between institutions and talents in various industries in Metro D.C. area and Shenzhen, to promote long-term commercially in-depth cooperation and communication between the two places, and to facilitate mutual benefits for innovation and entrepreneurship projects in various industries.', lang:'eng'},
-  {name:'愿景',value:'搭建美国大华府地区与中国深圳两地在各行业机构与人才的友好交流平台；促进两地长期商业深度合作交流；推进各行业创新创业项目互惠互利。', lang:'cn'}
-]
+export const aboutInfo:Record<string, Record<string,string>[]> = {
+  'intro': [
+    {name:"商会介绍",lang:'cn', value:'美国大华府地区是集美国政治中心、经济中心、文化中心、高科技中心、生物科技中心和国防军工企业为一体的第四大都市圈。\n深圳是中国的证券资本市场中心以及重要的国际经济中心，仅次于北京、上海，于2015年成为中国大陆第三大经济强市，其中高新技术、金融、物流和文化产业尤为发达。'},
+    {name:'introduction',lang:'eng', value:"Shenzhen, as one of China's center of securities market and global economy second only to Beijing and Shanghai, becoming the third-largest city of economy in Mainland China in 2015, of which high-tech, finance, logistics and cultural industries are particularly developed.\nThe Metro D.C. Area is the fourth largest metropolitan area that integrates the US political center, economic center, cultural center, high-tech center, biotechnology center, and defense military industry."},
+  ],
+  'mission': [
+    {name:'misson', value:'We aim to build a platform for friendly exchanges between institutions and talents in various industries in Metro D.C. area and Shenzhen, to promote long-term commercially in-depth cooperation and communication between the two places, and to facilitate mutual benefits for innovation and entrepreneurship projects in various industries.', lang:'eng'},
+    {name:'愿景',value:'搭建美国大华府地区与中国深圳两地在各行业机构与人才的友好交流平台；促进两地长期商业深度合作交流；推进各行业创新创业项目互惠互利。', lang:'cn'},
+  ],
+}
 
-export const intro = [
-  {lang:'eng', value:"Shenzhen, as one of China's center of securities market and global economy second only to Beijing and Shanghai, becoming the third-largest city of economy in Mainland China in 2015, of which high-tech, finance, logistics and cultural industries are particularly developed.\nThe Metro D.C. Area is the fourth largest metropolitan area that integrates the US political center, economic center, cultural center, high-tech center, biotechnology center, and defense military industry."},
-  {lang:'cn', value:'美国大华府地区是集美国政治中心、经济中心、文化中心、高科技中心、生物科技中心和国防军工企业为一体的第四大都市圈。\n深圳是中国的证券资本市场中心以及重要的国际经济中心，仅次于北京、上海，于2015年成为中国大陆第三大经济强市，其中高新技术、金融、物流和文化产业尤为发达。'}
-]
+export const branches = {
+  'cn': {name:'常设分支机构/委员会',value: ["深圳-华盛顿生物医药技术转化中心","深圳-美国国际教育服务中心","深圳-美国IT技术中心","专业人才委员会", "项目投资引导委员会"], lang:'cn'},
+  'eng': {name:'Permanent Branches/Committees', value: ["Biomedical Technology Center", "International Education Service Center", "IT Center", "Professional Talent Committee", "Project Investment Committee"], lang:'eng'}
+
+}
+

@@ -12,7 +12,7 @@ export default function News () {
   },[])
   return (
     <section id="news">
-      {JSON.stringify(newsList)}
+      {/* {JSON.stringify(newsList)} */}
       This is the news article part.
     </section>
   )
