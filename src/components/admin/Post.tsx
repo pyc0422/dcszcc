@@ -1,12 +1,19 @@
+
 import { Button } from "@mui/material"
 import React, {useEffect} from "react"
 import dynamic from 'next/dynamic';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 import 'react-quill/dist/quill.snow.css';
 import "./admin.css"
 import {useForm, SubmitHandler} from 'react-hook-form';
 import { NewsType } from "@/utility/types";
 import { addNews } from "@/lib/api";
+
+// import { ImageResize } from 'quill-image-resize-module-ts';
+
+// Quill.register('modules/imageResize', ImageResize);
+
 const formats = [
   'header',
   'size',
@@ -48,7 +55,7 @@ const modules = {
   },
 };
 export default function Post () {
-  const defaultPost = {title:"", news_date:"", important:false, notified:false, content:""}
+  const defaultPost = {title:"", news_date:"", author:"admin", important:false, notified:false, content:""}
   const {register, handleSubmit, reset, setValue, watch, formState:{errors}} = useForm({defaultValues: defaultPost})
   useEffect(() => {
     register("content", { required: true })
@@ -62,7 +69,6 @@ export default function Post () {
     console.log('post data:', data)
     data.important = data.important === 'yes' ? true : false;
     data.notified = data.notified === 'yes' ? true : false;
-    data.author = 'admin'
     return addNews(data)
      .then(res => {
       if (res === 'added') {
@@ -79,9 +85,16 @@ export default function Post () {
           <label className="post_label">标题： </label>
           <input type="text" placeholder="标题" className="post_input" {...register("title")}/>
         </div>
-        <div className="input_box">
-          <label>新闻日期：</label>
-          <input type="date" className="post_input" {...register("news_date")}/>
+
+        <div className="input_box ">
+          <div className="flex flex-row justify-basline items-center w-1/2">
+            <label className="w-inherit">新闻日期：</label>
+            <input type="date" className="post_input" {...register("news_date")}/>
+          </div>
+          <div className="flex w-1/2 justify-end items-center">
+            <label className="w-inherit">作者： </label>
+           <input type="text" placeholder="作者姓名" className="post_input" {...register("author")}/>
+          </div>
         </div>
         {/* <div className="input_box">
           <label>标签： </label>
@@ -108,13 +121,13 @@ export default function Post () {
         </div>
         <ReactQuill
           theme="snow"
-          className="h-80 mt-4 mb-10 w-full"
+          className="h-96 mt-4 mb-10 w-full"
           value={quillInput}
           onChange={handleChange}
           modules={modules}
           formats={formats}
         />
-        <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
+        <div className="flex flex-row justify-around mt-4 pt-4">
           <Button type="submit" variant="outlined" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>发布</Button>
           <Button type="reset" variant="contained" size="small" sx={{border:2, m:"1rem", px:'8rem'}}>重置</Button>
         </div>

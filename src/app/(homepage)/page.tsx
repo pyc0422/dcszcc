@@ -10,14 +10,11 @@ export default function Page() {
 
   return (
     <div>
-
-        <Subscribe />
-        <About />
-        <News />
-        <Contact />
-
+      <Subscribe />
+      <About />
+      <News />
+      <Contact />
       <Footer/>
     </div>
-
   )
 }

@@ -1,9 +1,8 @@
-import { Timestamp } from "firebase/firestore";
 
 var nodemailer = require("nodemailer");
 const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
 
-export async function sendMail(subject:string, toEmail:string, otpText:string, html?:string) {
+export async function sendMail(subject:string, toEmail:string | string[], otpText?:string, html?:string) {
   var transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -28,8 +27,3 @@ export async function sendMail(subject:string, toEmail:string, otpText:string, h
   });
 }
 
-
-// export function convertTimestamp(time:Timestamp) {
-//   const date = new Date(time.seconds * 1000)
-//   return date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear()
-// }
