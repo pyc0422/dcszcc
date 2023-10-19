@@ -20,6 +20,11 @@ export default function Page () {
             <Image src="/wechat-qr.png" alt="wechat qr code" width={100} height={100} style={{padding:"0.3rem"}}/>
         </Stack>
         </Stack>
+        <div className='w-full bottom-0 left-0 text-center'>
+        <p className='font-extralight text-xs text-slate-700'>
+        &copy; 2023 SZCC
+        </p>
+      </div>
     </div>
   )
 }

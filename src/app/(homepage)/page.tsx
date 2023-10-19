@@ -9,12 +9,15 @@ import Contact from '../../components/content/contact/Contact';
 export default function Page() {
 
   return (
-    <div>
-      <Subscribe />
-      <About />
-      <News />
-      <Contact />
-      <Footer/>
-    </div>
+    <>
+      <div className='mb-[150px] md:mb-[300px]'>
+        <Subscribe />
+        <About />
+        <News />
+        <Contact />
+       </div>
+    <Footer/>
+    </>
+
   )
 }
