@@ -18,33 +18,20 @@
 
 /* ------------ footer ------------ */
 
-.footer-main {
-  display: flex;
-  flex-direction: row;
-  padding: 1rem 4rem;
-  justify-content: space-around;
-  align-items: baseline;
-}
-
-@media (max-width:600px) {
-  .footer-container {
-    padding:1rem
-  }
-}
 @layer components {
   .footer-grid {
     @apply flex flex-col flex-wrap justify-center items-center p-1
   }
 
 }
-.footer-grid {
+/* .footer-grid {
   text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   padding-bottom: 1rem;
-}
+} */
 
 
 .MuiListItem-root  {

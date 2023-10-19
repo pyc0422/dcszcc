@@ -100,6 +100,9 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+p {
+  text-indent:2em;
+}
 /* a {
   color: inherit;
   text-decoration: none;
@@ -148,6 +151,14 @@ body {
   }
 }
 
+@layer components {
+  .about_title {
+    @apply capitalize text-center text-2xl font-medium mb-4 md:mb-8
+  }
+  .short_hr {
+    @apply w-96 h-1 mx-auto my-8 bg-gray-100 border-0 rounded sm:my-16 dark:bg-gray-500 opacity-80
+  }
+}
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)

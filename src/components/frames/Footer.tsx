@@ -6,7 +6,7 @@ import { partners, info } from '../../utility/data';
 
 export default function Footer () {
   return (
-    <div className="flex flex-col bg-[#D9D9D9] bottom-0 left-0 w-screen min-h-fit">
+    <div className="flex absolute flex-col inset-x-0 bg-[#D9D9D9] bottom-0 w-screen min-h-fit">
       <div className='flex flex-row px-4 py-8 justify-around items-start'>
       <div className="footer-grid">
         <Typography component="a" href="/partner" className="footer-title">合作伙伴</Typography>
@@ -35,7 +35,7 @@ export default function Footer () {
         </Stack>
       </div>
       </div>
-      <div className='w-full fixed bottom-0 left-0 text-center'>
+      <div className='w-full bottom-0 left-0 text-center'>
         <p className='font-extralight text-xs text-slate-700'>
         &copy; 2023 SZCC
         </p>
