@@ -113,25 +113,6 @@ p {
     color-scheme: light;
   }
 }
-#homepage {
-  left:0;
-  font: 'Roboto Mono';
-  background-color: rgba(103, 102, 102, 0.8);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1rem 3rem;
-  height: 40vh;
-  min-height: max-content;
-}
-
-@media (max-width:900px) {
-  #homepage {
-    flex-direction: column;
-    height:max-content
-  }
-}
 
 @layer base {
   input {

@@ -1,22 +1,11 @@
 "use client"
 
-import { getAllNews } from "@/lib/api"
-import { NewsType } from "@/utility/types"
-import { useEffect, useState } from "react"
-
+import { useAppContext } from "@/components/AppContext"
+import { sortedArray } from "@/utility/functions"
 export default function Page () {
 
-  const [newsList, setNewsList] = useState<NewsType[]|null>(null)
-  useEffect(() => {
-    getAllNews()
-      .then((res) => {
-        if (res.data) {
-          const sorted = res.data.sort((a:NewsType,b:NewsType) => (new Date(b.news_date).getTime()- new Date(a.news_date).getTime()))
-          setNewsList(sorted)
-        }
-      })
-  },[])
-  // console.log(newsList)
+  const {newsList} = useAppContext();
+
   return (
     <div className="flex flex-col items-center min-h-screen">
     <div className="p-4 m-2 md:m-8 max-w-[960px] max-h-[800px]">
@@ -26,7 +15,7 @@ export default function Page () {
       !newsList.length ? <h1 className="text-center">暂时没有新闻</h1>
         :
         <ul className="md:pl-5 list-disc">
-          {newsList.map((news) =>
+          {sortedArray(newsList, "time").map((news) =>
           <li key={news.id} className="p-1 m-1">
             <div className="flex flex-row justify-between items-center border-b-2 border-gray-300 md:border-b-0">
               <a className="w-2/3 hover:underline hover:opacity-60" href={`/articles/${news.id}`}>{news.title}</a>

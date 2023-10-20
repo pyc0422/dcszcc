@@ -10,11 +10,14 @@ export default function Page() {
 
   return (
     <>
-      <div className='mb-[150px] md:mb-[300px]'>
+      <div className='mb-[150px] md:mb-[300px] flex flex-col items-center'>
         <Subscribe />
+        <div className='max-w-[960px]'>
         <About />
         <News />
         <Contact />
+        </div>
+
        </div>
     <Footer/>
     </>
