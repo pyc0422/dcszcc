@@ -1,6 +1,6 @@
 import { NewsType } from "@/utility/types";
 
-const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER || "http://localhost:3000";
 
 // async function handleResponse<T>(response: Response): Promise<T> {
 //   const contentType = response.headers.get("Content-Type") || "";
