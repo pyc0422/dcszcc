@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-const SERVER_URL = process.env.NEXT_PUBLIC_FIREBASE_SERVER || "http://localhost:3000";
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER || "http://localhost:3000";
 
 
 export async function middleware(request: NextRequest) {
