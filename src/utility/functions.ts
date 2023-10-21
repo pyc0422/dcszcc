@@ -11,8 +11,14 @@ export function sortedArray (arr:NewsType[], type:string) {
     return arr.sort((a:NewsType,b:NewsType) => (new Date(b.news_date).getTime()- new Date(a.news_date).getTime()))
   }
   if (type === "important") {
-    return arr.filter((a:NewsType) => a.important).sort((a:NewsType,b:NewsType) => (new Date(b.news_date).getTime()- new Date(a.news_date).getTime()))
+    return arr.filter((a:NewsType) => a.important).sort((a:NewsType,b:NewsType) => (new Date(a.news_date).getTime()- new Date(b.news_date).getTime()))
   }
   return arr
 
+}
+
+export const getImg = (str:string) => {
+  const a = str.split(">")
+  const b= a.filter(e =>  (e.slice(1,4) === 'img'))
+  return b.map(p => p.slice(9))
 }
