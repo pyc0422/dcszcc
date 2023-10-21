@@ -1,8 +1,8 @@
-import { Button, List, Stack, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import { partners, info } from '../../utility/data';
-
+import ContactInfo from './ContactInfo';
 
 export default function Footer () {
   return (
@@ -10,35 +10,29 @@ export default function Footer () {
       <div className='flex flex-row px-4 py-8 justify-around items-start'>
       <div className="footer-grid">
         <Typography component="a" href="/partner" className="footer-title">合作伙伴</Typography>
-        <List sx={{display: {xs:'none', md:'block'}}}>
+        <div className="hidden md:flex flex-row items-center justify-center mt-4">
           {partners.slice(0,5).map((company, i) =>
-            <li key={i} className="text-[#2a2a2b] hover:text-white/90 font-light text-sm active:text-slate-800 active:font-medium">
-              <a href={company.link}>{company.name}</a>
-            </li>
+            <a key={i} title={company.name} href={company.link} className="hover:scale-110 hover:-translate-y-1 hover:duration-150 hover:delay-150 font-light text-sm p-2">
+              <Image src={company.logo} alt={company.name} width={30} height={30}/>
+            </a>
           )}
           {partners.length > 5 ?
           <Button sx={{color:"#101a30", fontWeight:500}} size="small" href='/partner'>更多...</Button>
            : null}
-        </List>
+        </div>
       </div>
       <div className='footer-grid'>
         <Typography component={"a"} href="/info" className="footer-title">联系信息</Typography>
-        <Stack className="info-stack" sx={{display: {xs:'none', md:'block'}}}>
-          <Typography style={{fontSize:"small", color:"#2a2a2b"}}>{info[0].name}: {info[0].value}</Typography>
-          <Stack direction="row" flexWrap={"wrap"} spacing={2}>
-            <Stack direction={"column"}>
-            {info.slice(1).map((item, i) =>
-              <Typography key={i} style={{fontSize:"small", color:"#2a2a2b"}} component="span">{item.name}: {item.value}</Typography>)}
-            </Stack>
-            <Image src="/wechat-qr.png" alt="wechat qr code" width={100} height={100} style={{padding:"0.3rem"}}/>
-        </Stack>
-        </Stack>
+        <div className='hidden md:block '>
+        <ContactInfo />
+        </div>
+
       </div>
       </div>
       <div className='w-full bottom-0 left-0 text-center'>
-        <p className='font-extralight text-xs text-slate-700'>
+        <div className='font-extralight text-xs text-slate-700'>
         &copy; 2023 SZCC
-        </p>
+        </div>
       </div>
     </div>
   )

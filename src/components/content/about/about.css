@@ -20,7 +20,7 @@
   content:'';
   position:absolute;
   top:0;
-  left:18px;
+  left:10px;
   height:100%;
   width:3px;
   background:var(--line-color)
@@ -38,7 +38,7 @@
   }
   .vertical-timeline.vertical-timeline--two-columns:before{
     left:50%;
-    margin-left:-2px
+    margin-left:-4px
   }
 }
 .vertical-timeline-element{
