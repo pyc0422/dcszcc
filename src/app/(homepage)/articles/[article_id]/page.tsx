@@ -28,9 +28,10 @@ export default function Page ({ params }: { params: { article_id: string } }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div className="flex flex-col justify-center items-center p-2 m-4" id="top">
+    <div className="flex flex-col items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center p-2 md:m-4 max-w-[960px]" id="top">
       {article.content.length ?
-      <div className="p-4 m-6 w-full md:w-3/4 flex flex-col justify-between">
+      <div className="p-4 md:m-6 w-full md:w-3/4 flex flex-col justify-between">
         <div>
         <h1 className="text-3xl font-bold text-center mb-8">{article.title}</h1>
         <div dangerouslySetInnerHTML={{__html: article.content}} />
@@ -45,9 +46,15 @@ export default function Page ({ params }: { params: { article_id: string } }) {
         </div>
       </div>
       :
-      <h1>正在加载，请等待...</h1>
+      <h1 className="mt-16">正在加载，请等待...</h1>
       }
 
+    </div>
+    <div className='w-full bottom-0 left-0 text-center'>
+        <p className='font-extralight text-xs text-slate-700'>
+        &copy; 2023 SZCC
+        </p>
+      </div>
     </div>
   )
 }
