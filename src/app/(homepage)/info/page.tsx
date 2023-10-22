@@ -1,3 +1,4 @@
+import ContactInfo from "@/components/frames/ContactInfo"
 import { Typography, Stack } from "@mui/material"
 import Image from "next/image"
 import React from "react"
@@ -8,23 +9,16 @@ const info = [
 ]
 export default function Page () {
   return (
-    <div>
-       <Typography>联系信息</Typography>
-        <Stack className="info-stack" sx={{display: {xs:'none', md:'block'}}}>
-          <Typography style={{fontSize:"small"}}>{info[0].name}: {info[0].value}</Typography>
-          <Stack direction="row" flexWrap={"wrap"} spacing={2}>
-            <Stack direction={"column"}>
-            {info.slice(1).map((item, i) =>
-              <Typography key={i} style={{fontSize:"small"}} component="span">{item.name}: {item.value}</Typography>)}
-            </Stack>
-            <Image src="/wechat-qr.png" alt="wechat qr code" width={100} height={100} style={{padding:"0.3rem"}}/>
-        </Stack>
-        </Stack>
-        <div className='w-full bottom-0 left-0 text-center'>
-        <p className='font-extralight text-xs text-slate-700'>
-        &copy; 2023 SZCC
-        </p>
+    <>
+      <div className="flex flex-col items-center p-2 md:m-4">
+        <div className="text-2xl font-normal">联系信息</div>
+          <ContactInfo />
       </div>
-    </div>
+      <div className='w-full fixed bottom-0 left-0 text-center'>
+        <div className='font-extralight text-xs text-slate-700'>
+        &copy; 2023 SZCC
+        </div>
+      </div>
+    </>
   )
 }

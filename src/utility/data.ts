@@ -11,12 +11,11 @@ export const socialItems = [
 ]
 
 export const partners = [
-  {name: '中国xx商会1', link:""},
-  {name: 'xx品牌', link:""},
-  {name: '中国xx商会2', link:""},
-  {name: 'xx品牌2', link:""},
-  {name: '中国xx商会3', link:""},
-  {name: '中国xx商会4', link:""},
+  {name: '中国xx商会1', link:"",logo:'/fake-logo-1.svg'},
+  {name: 'xx品牌', link:"", logo:'/fake-logo-2.svg'},
+  {name: '中国xx商会2', link:"", logo:'/fake-logo-3.svg'},
+  {name: 'xx品牌2', link:"", logo:'/fake-logo-4.svg'},
+  {name: '中国xx商会3', link:"", logo:'/fake-logo-5.svg'},
 ]
 
 export const info = [
