@@ -67,7 +67,8 @@ export default function Header () {
                 my: 2,
                 color:"#2b2b2b !important",
                 textAlign:"center",
-                display: 'block'
+                display: 'block',
+                fontSize:'1.2em'
               }}>
               {item[0]}
             </Button>

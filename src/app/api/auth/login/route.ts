@@ -12,7 +12,7 @@ export async function POST (request:Request) {
     if (credential) {
       const user = credential.user;
       const token = await user.getIdTokenResult()
-      console.log('token:', token.token)
+      // console.log('token:', token.token)
       const expiresIn = 60 * 60 * 2;
       //Add the cookie to the browser
       cookies().set('session', token.token, { maxAge: expiresIn, secure: true, httpOnly:true},);
@@ -33,7 +33,7 @@ export async function POST (request:Request) {
 export async function GET(request: NextRequest) {
   const session = cookies().get("session")?.value || "";
   //Validate if the cookie exist in the request
-  console.log('s', session)
+  // console.log('s', session)
   const auth = getAuth(app)
   if (!session) {
     return NextResponse.json({ isLogged: false }, { status: 401 });
@@ -41,8 +41,8 @@ export async function GET(request: NextRequest) {
   const curUser = await auth.currentUser?.getIdToken();
 
   if (curUser !== session) {
-    console.log('curr', curUser)
-    console.log('not equale')
+    // console.log('curr', curUser)
+    // console.log('not equale')
     return NextResponse.json({ isLogged: false }, { status: 401 });
   }
   return NextResponse.json({ isLogged: true }, { status: 200 });

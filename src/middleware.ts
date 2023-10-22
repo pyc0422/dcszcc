@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
     },
   });
   //Return to /login if token is not authorized
-  console.log('status:', responseAPI.status, path)
+  // console.log('status:', responseAPI.status, path)
   if (responseAPI.status !== 200 && path !== '/admin') {
     return NextResponse.redirect(new URL("/admin", request.url));
   }

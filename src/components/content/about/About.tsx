@@ -7,7 +7,7 @@ import "./about.css"
 // import 'react-vertical-timeline-component/style.min.css';
 export default function About () {
   const {newsList} = useAppContext()
-  console.log(newsList)
+  // console.log(newsList)
   return (
     <section id="about" className="h-1/3 my-8 md:my-16 flex flex-col md:flex-row justify-between items-center">
       <div className="p-2 m-2 md:mx-0 md:w-1/2 md:mr-16">

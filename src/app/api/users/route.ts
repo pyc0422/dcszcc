@@ -6,7 +6,7 @@ export async function GET (request: Request) {
   try {
     const q = await getDocs(collection(firestore, "users"));
     const data = q.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-    console.log('data in handler', data)
+    // console.log('data in handler', data)
     return NextResponse.json({data})
   } catch(error) {
     return NextResponse.json(error)
@@ -16,7 +16,7 @@ export async function GET (request: Request) {
 export async function POST (request:Request) {
   try {
     const body = await request.json();
-    console.log('body in post users:', body)
+    // console.log('body in post users:', body)
     const ref = collection(firestore, "users")
     const res = await getDocs(query(ref, where("email","==", body.email)))
     if (res.size == 0) {
@@ -26,7 +26,7 @@ export async function POST (request:Request) {
       return NextResponse.json({statusCode:400, message:"user exists"})
     }
   } catch(error){
-    console.log('error in post user', error)
+    // console.log('error in post user', error)
     return NextResponse.json({status:400})
   }
 }
