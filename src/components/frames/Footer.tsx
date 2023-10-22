@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
-import { partners, info } from '../../utility/data';
+import { partners } from '../../utility/data';
 import ContactInfo from './ContactInfo';
 
 export default function Footer () {
@@ -26,7 +26,6 @@ export default function Footer () {
         <div className='hidden md:block '>
         <ContactInfo />
         </div>
-
       </div>
       </div>
       <div className='w-full bottom-0 left-0 text-center'>

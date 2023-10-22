@@ -2,14 +2,13 @@
 import React, {useEffect} from 'react'
 import Header from '../../components/frames/Header'
 import { getAllNews } from '@/lib/api'
-import { NewsType } from '@/utility/types'
 import { useAppContext } from '@/components/AppContext'
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const {newsList, setNewsList} = useAppContext()
+  const {setNewsList} = useAppContext()
   useEffect(() => {
     getAllNews()
       .then((res) => {

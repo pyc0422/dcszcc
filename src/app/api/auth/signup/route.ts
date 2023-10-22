@@ -5,7 +5,7 @@ import { FirebaseError } from "firebase/app";
 
 export async function POST (request: Request) {
   const {email, password} = await request.json()
-  console.log ('sign up:', email, password)
+  // console.log ('sign up:', email, password)
   try {
     const credential = await createUserWithEmailAndPassword(auth, email, password)
     if (credential) {

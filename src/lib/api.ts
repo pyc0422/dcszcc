@@ -22,8 +22,10 @@ export async function addUser (email:string) {
   // console.log('email in addUser:', email, SERVER_URL)
   try {
     const res = await fetch(`${SERVER_URL}/api/users/`,{method:'POST', headers:{ "Content-Type": "application/json"}, body:JSON.stringify({email})})
-    if (res) {console.log('res in api.ts', res)}
-    return res.json()
+    if (res) {
+     return res.json()
+    }
+
   } catch(error) {
     return error
   }
@@ -65,7 +67,6 @@ export async function logOut () {
 
 export async function addNews (new_news:NewsType) {
   try {
-    console.log('addNews:', new_news)
     const res = await fetch(`${SERVER_URL}/api/news/all`, {method:'POST', headers, body:JSON.stringify(new_news)})
     if (res) {
       return res.json()

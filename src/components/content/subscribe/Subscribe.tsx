@@ -11,7 +11,7 @@ export default function Subscribe () {
     setEmail(e.target.value)
   }
   const handleSubscribe = () => {
-    console.log('email in handle', email)
+
     const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!email.length) {
       setAlert({status:true, severity:"error", message:"Please provide your email to subscribe"})
