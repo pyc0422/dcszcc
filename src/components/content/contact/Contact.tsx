@@ -69,17 +69,17 @@ export default function Contact() {
         :
         <form  onSubmit={submitForm}>
           <div className='row-container'>
-            <div className="md:w-1/3">
-              <label className='text-center'>
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row items-center">
+              <label className='text-center pr-4'>
                 姓名
               </label>
-              <input type='text' name='name' style={{ height: '30px' }} placeholder=" Your Name" onChange={handleInput} value={formData.name} />
+              <input type='text' name='name' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Name" onChange={handleInput} value={formData.name} />
             </div>
-            <div className="md:w-1/3">
-            <label className='text-center'>
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row md:justify-end items-center">
+            <label htmlFor="email" className='text-center px-4'>
                 邮箱
-              </label>
-              <input type='text' name='email' style={{ height: '30px' }} placeholder=" Your Email" onChange={handleInput} value={formData.email} />
+            </label>
+            <input type='text'name='email' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Email" onChange={handleInput} value={formData.email} />
              </div>
           </div>
 
