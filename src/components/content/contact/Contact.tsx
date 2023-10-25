@@ -56,46 +56,37 @@ export default function Contact() {
 
 
   return (
-    <div className='contact'>
-      <Grid container alignItems="center" justifyContent="center" >
-           <Grid item>
-          <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
-          </Grid>
-          <Grid item>
-          <Typography align="center" variant="h5" fontWeight={600}>联系我们  |  Contact</Typography>
-          </Grid>
-          </Grid>
-      <Typography align="center" variant="body1">Get in touch with us</Typography>
+    <div className='m-[10px] p-0 max-w-[960px]'>
+      <div className="flex-center">
+        <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+        <span className="text-xl md:text-2xl font-medium p-2">联系我们 ｜ Contact</span>
+
+      </div>
+      <div className="text-center">Get in touch with us</div>
+
       {formSuccess ?
         <div>{formSuccessMessage}</div>
         :
         <form  onSubmit={submitForm}>
           <div className='row-container'>
-            <div className='div1'>
-            <Typography  variant="body1" fontWeight={500}>姓名</Typography >
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row items-center">
+              <label className='text-center pr-4'>
+                姓名
+              </label>
+              <input type='text' name='name' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Name" onChange={handleInput} value={formData.name} />
             </div>
-            <div className='div2'>
-             <Typography  variant="body1" fontWeight={500}>电子邮件</Typography>
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row md:justify-end items-center">
+            <label htmlFor="email" className='text-center px-4'>
+                邮箱
+            </label>
+            <input type='text'name='email' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Email" onChange={handleInput} value={formData.email} />
              </div>
           </div>
 
-          <div className='row-container2'>
-            <div className='div3'>
-            <input type='text' name='name' style={{ height: '30px' }} placeholder=" Your Name" onChange={handleInput} value={formData.name} />
-            </div>
-
-             <div className='div4'>
-            <input type='text' name='email' style={{ height: '30px' }} placeholder=" Your Email" onChange={handleInput} value={formData.email} />
-            </div>
-           </div>
-
-          <div>
-            <Typography  variant="body1" fontWeight={500}>消息</Typography> <br/>
-            <div className="message">
-            <input type='text' name="message"  style={{ height: '30px' }} onChange={handleInput} placeholder=" Your Message"value={formData.message} />
-            </div>
+          <div className='flex flex-col mt-4'>
+            <label className='text-md font-normal'>消息</label>
+            <textarea name="message" className="p-2 h-[100px] md:h-[200px]" onChange={handleInput} placeholder=" Your Message"value={formData.message} />
           </div>
-
           <Grid container justifyContent="center" alignItems="center"  spacing={2} >
             <Grid item>
           <button className="custom-button" type="submit" >发送</button>

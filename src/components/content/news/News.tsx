@@ -29,15 +29,10 @@ export default function News() {
 
   return (
     <section id="news">
-           <Grid container alignItems="center" justifyContent="center" >
-           <Grid item>
-          <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
-          </Grid>
-          <Grid item>
-          <Typography align="center" variant="h5" fontWeight={600}>近期活动 | News</Typography>
-          </Grid>
-          </Grid>
-
+      <div className="flex-center">
+        <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+        <span className="text-xl md:text-2xl font-medium p-2">近期活动 ｜ News</span>
+      </div>
           <div>
             {
               sortedArray(newsList, "time").map((e) =>
