@@ -4,6 +4,7 @@ import React from "react"
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component"
 import Image from "next/image"
 import "./about.css"
+import Link from "next/link"
 // import 'react-vertical-timeline-component/style.min.css';
 export default function About () {
   const {newsList} = useAppContext()
@@ -28,15 +29,16 @@ export default function About () {
           date={e.news_date.toString()}
           icon={<Image src="/p-logo.png" alt="icon" width={24} height={24} className="w-full h-full object-cover"/>}
         >
-            <h3 className="text-sm font-normal pb-1">{e.title}</h3>
-               <div className="flex-center">
-                {getImg(e.content).slice(0,3).map((pic, i) =>
-                  <div key={i} className="max-h-[80px] h-fit w-auto p-1">
-
-                  <Image key={i} src={pic.slice(1,pic.length-1)} width={40} height={40} alt={e.title + 'img'} className="w-[120px] h-[80px] object-cover"/>
-                  </div>
-                )}
-               </div>
+          <Link href={`/articles/${e.id}`}>
+            <div className="text-sm font-normal pb-1">{e.title}</div>
+              <div className="flex-center">
+              {getImg(e.content).slice(0,3).map((pic, i) =>
+                <div key={i} className="max-h-[80px] h-fit w-auto p-1">
+                <Image key={i} src={pic.slice(1,pic.length-1)} width={40} height={40} alt={e.title + 'img'} className="w-[120px] h-[80px] object-cover"/>
+                </div>
+              )}
+              </div>
+          </Link>
 
 
 
