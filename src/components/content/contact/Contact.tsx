@@ -2,8 +2,9 @@ import "./contact.css"
 import Typography from '@mui/material/Typography';
 import emailjs from '@emailjs/browser';
 import React, { useState } from "react";
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import Image from "next/image";
 
 
 
@@ -55,9 +56,15 @@ export default function Contact() {
 
 
   return (
-    <div>
-
-      <Typography align="center" variant="h5" fontWeight={600}> 联系我们  |  Contact</Typography>
+    <div className='contact'>
+      <Grid container alignItems="center" justifyContent="center" >
+           <Grid item>
+          <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+          </Grid>
+          <Grid item>
+          <Typography align="center" variant="h5" fontWeight={600}>联系我们  |  Contact</Typography>
+          </Grid>
+          </Grid>
       <Typography align="center" variant="body1">Get in touch with us</Typography>
       {formSuccess ?
         <div>{formSuccessMessage}</div>
