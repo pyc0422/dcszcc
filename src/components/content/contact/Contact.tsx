@@ -1,7 +1,10 @@
 import "./contact.css"
 import Typography from '@mui/material/Typography';
 import emailjs from '@emailjs/browser';
-import React, { useState } from "react"
+import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Image from "next/image";
 
 
 
@@ -26,53 +29,72 @@ export default function Contact() {
   }
 
   const submitForm = (e:any) => {
-    // We don't want the page to refresh
     console.log(e.target.name);
     console.log(e.target.email);
     console.log(e.target.message);
     e.preventDefault();
-    const serviceId:string= process.env.REACT_APP_SERVICE_ID!;
-    const templateId:string=process.env.REACT_APP_TEMPLATE_ID!;
-    const publicKey:string=process.env.REACT_APP_PUBLIC_KEY!;
-    // emailjs.sendForm('service_nmw8i6s','template_f5lgqx5',e.target,'PzFIFuHM9Om215jxv')
+    const serviceId:string= process.env.NEXT_PUBLIC_SERVICE_ID!;
+    const templateId:string=process.env.NEXT_PUBLIC_TEMPLATE_ID!;
+    const publicKey:string=process.env.NEXT_PUBLIC_PUBLIC_KEY!;
+     //emailjs.sendForm('service_nmw8i6s','template_f5lgqx5',e.target,'PzFIFuHM9Om215jxv')
 
-    emailjs.sendForm(serviceId, templateId,e.target,publicKey);
+   emailjs.sendForm(serviceId, templateId,e.target,publicKey);
 
     //const formURL = e.target.action
     const data = new FormData()
 
-
   }
 
-  return (
-    <div>
+  const handleReset = (e:any) => {
+    // Reset the input data to an empty string
+    setFormData({
+      name: "",
+    email: "",
+    message: ""
+    });
+  };
 
-      <Typography align="center" variant="h5">联系我们 | Contact</Typography>
-      <Typography align="center">Get in touch with us</Typography>
+
+  return (
+    <div className='m-[10px] p-0 max-w-[960px]'>
+      <div className="flex-center">
+        <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+        <span className="text-xl md:text-2xl font-medium p-2">联系我们 ｜ Contact</span>
+
+      </div>
+      <div className="text-center">Get in touch with us</div>
+
       {formSuccess ?
         <div>{formSuccessMessage}</div>
         :
         <form  onSubmit={submitForm}>
-          <div>
-            <label>姓名</label>
-            <label>电子邮件</label>
-             <br/>
-            <input type="text" name="name" onChange={handleInput} value={formData.name} />
-            <input type="text" name="email" onChange={handleInput} value={formData.email} />
+          <div className='row-container'>
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row items-center">
+              <label className='text-center pr-4'>
+                姓名
+              </label>
+              <input type='text' name='name' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Name" onChange={handleInput} value={formData.name} />
+            </div>
+            <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row md:justify-end items-center">
+            <label htmlFor="email" className='text-center px-4'>
+                邮箱
+            </label>
+            <input type='text'name='email' className="w-full md:w-4/5 h-[30px]" placeholder=" Your Email" onChange={handleInput} value={formData.email} />
+             </div>
           </div>
 
-          {/* <div>
-            <label>电子邮件</label>
-            <input type="text" name="email" onChange={handleInput} value={formData.email} />
-          </div> */}
-
-          <div>
-            <label>消息</label> <br/>
-            <textarea name="message" onChange={handleInput} value={formData.message}></textarea>
+          <div className='flex flex-col mt-4'>
+            <label className='text-md font-normal'>消息</label>
+            <textarea name="message" className="p-2 h-[100px] md:h-[200px]" onChange={handleInput} placeholder=" Your Message"value={formData.message} />
           </div>
-
-          <button type="submit">发送</button>
-          <button type="submit" >重置</button>
+          <Grid container justifyContent="center" alignItems="center"  spacing={2} >
+            <Grid item>
+          <button className="custom-button" type="submit" >发送</button>
+          </Grid>
+           <Grid item>
+          <button className="custom-button"  type="button" onClick={handleReset} >重置</button>
+          </Grid>
+          </Grid>
         </form>
       }
     </div>
