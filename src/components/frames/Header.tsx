@@ -21,7 +21,9 @@ export default function Header () {
     <AppBar color="transparent" position="static">
       <Container maxWidth="xl" id="header">
         <Toolbar disableGutters sx={{margin:0}}>
-          <Image src="/logo.png" priority alt="logo" width="300" height="40"/>
+          <a className="w-1/3" href="/">
+           <Image src="/logo.png" priority alt="logo" width="300" height="40" className="w-full h-full"/>
+          </a>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
             <IconButton
               size="large"
@@ -76,8 +78,8 @@ export default function Header () {
           </div>
           <div className="hidden md:flex flex-row justify-between items-center h-full ">
             {socialItems.map((item, i) =>
-              <a key={i} href={item[1]} className="mx-1">
-                <Image src={item[0]} alt={item[0]+"link"} width={25} height={25}/>
+              <a key={i} href={item[1]} className="mx-1 h-[25px] w-[25px]">
+                <Image src={item[0]} alt={item[0]+"link"} width={20} height={20} className="w-full h-full object-cover"/>
               </a>
             )}
           </div>
