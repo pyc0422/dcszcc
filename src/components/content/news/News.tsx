@@ -1,45 +1,36 @@
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import { useAppContext } from "@/components/AppContext"
-import styles from './PhotoCarousel.module.css';
-import Typography from '@mui/material/Typography';
 import { getImg, sortedArray } from "@/utility/functions";
 import Image from "next/image";
-import Grid from '@mui/material/Grid';
 import Link from 'next/link';
-import { Button } from '@mui/material';
-
-const photos = [
-  'https://res.cloudinary.com/tidibubu/image/upload/v1697636250/Picture2_ifafly.jpg',
-  'https://res.cloudinary.com/tidibubu/image/upload/v1697636250/Picture1_fidjdk.jpg',
-  'https://res.cloudinary.com/tidibubu/image/upload/v1697636250/Picture3_mjaf2c.jpg'
-];
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 export default function News() {
   const {newsList} = useAppContext()
-
-  console.log(newsList[0]);
-
   const [activeIndex, setActiveIndex] = useState(0);
+  const topFive = sortedArray(newsList, 'time').slice(0, 5)
+  const images = topFive.map((news) => getImg(news.content)[0])
 
   const handlePrev = () => {
-    setActiveIndex((prevIndex) => (prevIndex === 0 ? photos.length - 1 : prevIndex - 1));
+    setActiveIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
-
   const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex === photos.length - 1 ? 0 : prevIndex + 1));
+    setActiveIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
-
   return (
     <section id="news">
       <div className="flex-center">
-        <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+        <div className="w-[25px] h-[25px]">
+          <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
+        </div>
         <span className="text-xl md:text-2xl font-medium p-2">近期活动 ｜ News</span>
       </div>
-      <div className='flex flex-row justify-between items-center'>
-        <div className='w-1/2 p-2 md:mr-16'>
+      <div className='flex flex-col md:flex-row justify-between items-center'>
+        <div className='md:w-1/2 p-2 md:mr-16'>
           <ul >
-            {sortedArray(newsList, "time").slice(0,5).map((e) =>
-               <li key={e.id} className='p-2 m-2 border border-2 rounded-md pb-4'>
+            {topFive.map((e) =>
+               <li key={e.id} className='p-2 m-1 border border-1 border-gray-300 rounded-md pb-4'>
                 <div className='flex flex-row justify-between items-center'>
                   <div className="text-sm font-normal pb-1">{e.title}</div>
                   <div className='text-xs'>{e.news_date}</div>
@@ -52,19 +43,32 @@ export default function News() {
             )}
           </ul>
           {newsList.length > 5 &&
-            <div className='flex justify-center'>
+            <div className='flex justify-center mt-2'>
               <button  className='text-center outline outline-1 border-black py-1 px-8'>
                 <Link href="/articles">更多活动</Link>
               </button>
             </div>
           }
+        </div>
+        <div className="hidden md:flex w-1/2 p-2 flex-row justify-around items-center h-[450px]">
+          <div onClick={handlePrev}>
+            <ArrowLeftIcon fontSize="large" className='hover:text-black/50 hover:scale-125 hover:-translate-x-1 hoaver:duration-150 hover:deplay-150'/>
           </div>
-     <div className={`${styles.carousel} w-1/2 p-2`}>
-      <img className={styles.photo} src={photos[activeIndex]} alt={`Photo ${activeIndex + 1}`} />
-      <button className={styles.prevButton} onClick={handlePrev}>Previous</button>
-      <button className={styles.nextButton} onClick={handleNext}>Next</button>
-    </div>
-       </div>
+          {topFive.length &&
+            <Link href={`/articles/${topFive[activeIndex].id}`} className='h-full'>
+              <Image
+               src={images[activeIndex].slice(1, images[activeIndex].length - 1)}
+               width={200} height={200}
+               alt={`Photo ${activeIndex + 1}`}
+               className='object-cover w-full h-full rounded-lg'
+            />
+            </Link>
+          }
+          <div onClick={handleNext}>
+            <ArrowRightIcon fontSize="large" className='hover:text-black/50 hover:scale-125 hover:translate-x-1 hoaver:duration-150 hover:deplay-150'/>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

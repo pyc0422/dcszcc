@@ -78,10 +78,6 @@
   }
 }
 
-/* * {
-  box-sizing: border-box;
-
-} */
 
 html,
 body {
@@ -103,10 +99,7 @@ body {
 p {
   text-indent:2em;
 }
-/* a {
-  color: inherit;
-  text-decoration: none;
-} */
+
 
 @media (prefers-color-scheme: light) {
   html {
