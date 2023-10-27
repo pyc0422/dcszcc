@@ -58,7 +58,9 @@ export default function Contact() {
   return (
     <div className='m-[10px] p-0 max-w-[960px]'>
       <div className="flex-center">
-        <Image src="/p-logo.png" alt="logo" width={36} height={36}/>
+        <div className="w-[25px] h-[25px]">
+          <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
+        </div>
         <span className="text-xl md:text-2xl font-medium p-2">联系我们 ｜ Contact</span>
 
       </div>

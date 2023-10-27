@@ -88,7 +88,7 @@ export default function Subscribe () {
         </div>
       </div>
       <div className="flex justify-center items-center">
-       <Image src="/01create.png" height={300} width={400} alt="create picture" className="shadow-md h-4/5 w-4/5 border-2 border-white"/>
+       <Image src="/01create.png" height={300} width={400} alt="create picture" className="shadow-md h-full w-full border-2 border-white"/>
       </div>
       </div>
     </section>
