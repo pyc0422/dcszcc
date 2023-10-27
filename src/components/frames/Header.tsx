@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState} from 'react';
 import "./Frames.css"
 import { navItems, socialItems } from "../../utility/data";
+import { Facebook, Twitter } from "@mui/icons-material";
 
 export default function Header () {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -24,7 +25,7 @@ export default function Header () {
           <a className="w-1/3" href="/">
            <Image src="/logo.png" priority alt="logo" width="300" height="40" className="w-full h-full"/>
           </a>
-          <Box sx={{flexGrow:1, display: {xs:'flex', md:'none'}}} >
+          <Box sx={{flexGrow:1, display: {xs:'flex', md:'none',justifyContent:'flex-end'}}} >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -53,7 +54,10 @@ export default function Header () {
               <MenuItem>
                 {socialItems.map((item, i) =>
                   <a key={i} href={item[1]} className="mx-[0.3]">
-                     <Image src={item[0]} alt={item[0]+"link"} width={20} height={20}/>
+                    {item[0] === '/WeChat.png' ?
+                      <Image src={item[0]} alt={item[0]+"link"} width={20} height={20}/>
+                    : item[0] === '/FaceBook.png' ? <Facebook /> : <Twitter />
+                    }
                   </a>
                 )}
               </MenuItem>
@@ -79,7 +83,10 @@ export default function Header () {
           <div className="hidden md:flex flex-row justify-between items-center h-full ">
             {socialItems.map((item, i) =>
               <a key={i} href={item[1]} className="mx-1 h-[25px] w-[25px]">
-                <Image src={item[0]} alt={item[0]+"link"} width={20} height={20} className="w-full h-full object-cover"/>
+                {item[0] === '/WeChat.png' ?
+                  <Image src={item[0]} alt={item[0]+"link"} width={20} height={20} className="w-full h-full object-cover"/>
+                : item[0] === '/FaceBook.png' ? <Facebook /> : <Twitter />
+                }
               </a>
             )}
           </div>

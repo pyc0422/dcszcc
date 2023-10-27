@@ -56,7 +56,7 @@ export default function Contact() {
 
 
   return (
-    <div className='m-[10px] p-0 max-w-[960px]'>
+    <div className='m-[10px] p-0 max-w-[960px]' id="contact">
       <div className="flex-center">
         <div className="w-[25px] h-[25px]">
           <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
