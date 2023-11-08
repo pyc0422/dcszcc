@@ -12,11 +12,11 @@ export default function About () {
   return (
     <section id="about" className="h-1/3 my-8 md:my-16 flex flex-col md:flex-row justify-between items-center">
       <div className="p-2 m-2 md:mx-0 md:w-1/2 md:mr-16">
-        <div className="flex-center">
+        <div className="flex-center md:mb-8">
           <div className="w-[25px] h-[25px]">
             <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
           </div>
-          <span className="text-xl md:text-2xl font-medium p-2">关于我们 ｜ About</span>
+          <span className="text-xl md:text-2xl p-2 font-serif_SC">关于我们 ｜ About</span>
         </div>
         <p>2018年4月，美国大华府地区-中国深圳商会秉持“搭建美国大华府地区与中国深圳两地在各行业机构与人才的友好交流平台；促进两地长期商业深度合作交流；推进各行业创新创业项目互惠互利”的宗旨，推动两地专业人士业务交流和往来，也得到了参加人员的欢迎和充分认可。</p>
       </div>
@@ -26,8 +26,8 @@ export default function About () {
         <VerticalTimelineElement
           key={e.id}
           className="vertical-timeline-element-work"
-          contentStyle={{ backgroundColor: "rgba(255,255,244,0.5)", color: '#000' }}
-          contentArrowStyle={{borderRight: '7px solid rgba(255,255,244,0.5)' }}
+          contentStyle={{ backgroundColor: "rgba(255,255,255, 0.5)", color: '#000' }}
+          contentArrowStyle={{borderRight: '7px solid rgba(255,255,255,0.5)' }}
           date={e.news_date.toString()}
           icon={<Image src="/p-logo.png" alt="icon" width={24} height={24} className="w-full h-full object-cover"/>}
         >

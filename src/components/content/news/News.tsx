@@ -20,11 +20,11 @@ export default function News() {
   };
   return (
     <section id="news">
-      <div className="flex-center">
+      <div className="flex-center md:mt-24 md:mb-16">
         <div className="w-[25px] h-[25px]">
           <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
         </div>
-        <span className="text-xl md:text-2xl font-medium p-2">近期活动 ｜ News</span>
+        <span className="font-serif_SC text-xl md:text-2xl p-2">近期活动 ｜ News</span>
       </div>
       <div className='flex flex-col md:flex-row justify-between items-center'>
         <div className='md:w-1/2 p-2 md:mr-16'>
