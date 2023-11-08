@@ -22,8 +22,8 @@
   top:0;
   left:10px;
   height:100%;
-  width:3px;
-  background:var(--line-color)
+  width:2px;
+  background:black;
 }
 .vertical-timeline.vertical-timeline--one-column-right::before{
   right:10px;left:unset
@@ -75,10 +75,13 @@
   position:absolute;
   top:0;
   left:0;
-  width:20px;
-  height:20px;
+  width:30px;
+  height:30px;
   border-radius:50%;
-  box-shadow:0 0 0 3px #fff,inset 0 2px 0 rgba(0,0,0,.08),0 2px 0 3px rgba(0,0,0,.05)
+  padding:3px;
+  background-color:#EDEFF0;
+
+  /* box-shadow:0 0 0 0px black,inset 0 2px 0 rgba(0,0,0,.08),0 2px 0 3px rgba(0,0,0,.05) */
 }
 .vertical-timeline--one-column-right .vertical-timeline-element-icon{
   right:0;left:unset
@@ -122,8 +125,9 @@
 .vertical-timeline-element-content{
   position:relative;
   margin-left:30px;
-  background:#fff;
+  background:transparent;
   border-radius:.25em;
+  /* border:1px solid black; */
   padding:2em;
   box-shadow:0 3px 0 #ddd
 }

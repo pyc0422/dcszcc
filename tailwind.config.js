@@ -18,7 +18,12 @@ module.exports = {
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif_SC:["var(--font-noto-serif)"]
+      }
+
+    },
   },
   plugins: [],
 }
