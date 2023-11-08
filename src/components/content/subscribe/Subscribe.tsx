@@ -48,7 +48,7 @@ export default function Subscribe () {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [alert.status])
   return (
-    <section className="w-screen bg-[#676666] bg-opacity-80 px-3 py-1 h-max md:h-[40vh] min-h-max md:min-h-[40vh] flex justify-center items-center">
+    <section className="w-screen bg-[#676666] bg-opacity-80 px-3 py-1 h-max md:h-[40vh] min-h-max md:min-h-[350px] flex justify-center items-center">
       <div className="w-screen max-w-[960px] flex flex-col md:flex-row justify-around items-center ">
       <div className="p-2">
         <h1 className="font-medium text-white text-3xl md:text-4xl">大华府地区中国深圳商会</h1>
@@ -87,8 +87,10 @@ export default function Subscribe () {
           >订阅资讯</Button>
         </div>
       </div>
-      <div className="flex justify-center items-center">
-       <Image src="/01create.png" height={300} width={400} alt="create picture" className="shadow-md h-full w-full border-2 border-white"/>
+      <div className="flex justify-center items-center h-[300px]">
+
+         <Image src="/01create.png" height={300} width={400} alt="create picture" className="shadow-md h-full w-full border-2 border-white object-cover"/>
+
       </div>
       </div>
     </section>

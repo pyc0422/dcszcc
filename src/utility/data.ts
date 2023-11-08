@@ -2,6 +2,7 @@ export const navItems:Array<Array<string>>= [
   ["首页", ""],
   ["关于我们","about"],
   ["新闻与活动","articles"],
+  ["会员企业", "partner"],
   ["联系我们","#contact"]
 ]
 export const socialItems = [

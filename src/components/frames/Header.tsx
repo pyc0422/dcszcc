@@ -23,12 +23,11 @@ export default function Header () {
       <Container maxWidth="xl" id="header">
         <Toolbar disableGutters sx={{margin:0}}>
           <a className="w-1/3" href="/">
-           <Image src="/logo.png" priority alt="logo" width="300" height="40" className="w-full h-full"/>
+           <Image src="/logo.png" priority alt="logo" width="300" height="40" className="w-full h-full md:w-4/5 md:h-4/5 object-cover"/>
           </a>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none',justifyContent:'flex-end'}}} >
             <IconButton
               size="large"
-              aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -74,7 +73,7 @@ export default function Header () {
                 color:"#2b2b2b !important",
                 textAlign:"center",
                 display: 'block',
-                fontSize:'1.2em'
+                fontSize:'1.1em'
               }}>
               {item[0]}
             </Button>

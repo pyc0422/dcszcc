@@ -57,14 +57,14 @@ export default function Contact() {
 
   return (
     <div className='m-[10px] p-0 max-w-[960px]' id="contact">
-      <div className="flex-center">
+      <div className="flex-center md:mt-28">
         <div className="w-[25px] h-[25px]">
           <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
         </div>
-        <span className="text-xl md:text-2xl font-medium p-2">联系我们 ｜ Contact</span>
+        <span className="text-xl md:text-2xl p-2 font-serif_SC">联系我们 ｜ Contact</span>
 
       </div>
-      <div className="text-center">Get in touch with us</div>
+      <div className="text-center md:mt-8 md:mb-16">Get in touch with us</div>
 
       {formSuccess ?
         <div>{formSuccessMessage}</div>
