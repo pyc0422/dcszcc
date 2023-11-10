@@ -19,7 +19,8 @@ export default function News() {
     setActiveIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
   return (
-    <section id="news">
+    <section id="news" className='flex-center'>
+      <div className='max-w-[960px]'>
       <div className="flex-center md:mt-24 md:mb-16">
         <div className="w-[25px] h-[25px]">
           <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
@@ -68,6 +69,7 @@ export default function News() {
             <ArrowRightIcon fontSize="large" className='hover:text-black/50 hover:scale-125 hover:translate-x-1 hoaver:duration-150 hover:deplay-150'/>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

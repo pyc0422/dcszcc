@@ -2,7 +2,8 @@ export const navItems:Array<Array<string>>= [
   ["首页", ""],
   ["关于我们","about"],
   ["新闻与活动","articles"],
-  ["会员企业", "partner"],
+  ["会员企业", "#partners"],
+  ['合作机会',"#partners"],
   ["联系我们","#contact"]
 ]
 export const socialItems = [
@@ -42,3 +43,9 @@ export const branches = {
 }
 
 export const president = "深圳是中国改革开放以后建立的第一个经济特区，是改革开放的试验场，也是国际社会观察中国走向的窗口。今年是改革开放四十周年，深圳作为中国改革开放的先行者，已经从一个边陲小镇发展成为有影响力的现代化国际大都市，深圳正作为粤港澳大湾区的领头羊奋勇前进。美国大华府地区集中了大量的联邦政府及国际组织机构，汇聚了众多的优质资源和优秀人才。近年来，来自深圳的各行各业的佼佼者也不断向大华府地区聚集。\n我们创立大华府地区-深圳商会的目的，就是希望搭起一个供两地商界人士交流、合作、共享的平台，为促进两地优势互补、为两地共同繁荣发展做出贡献。深圳商会成立至今吸引了各行各业的专家和精英，他们虽然来自不同领域，如生物医药、国际教育、新媒体、国际贸易、IT科技等等，但无一不被深圳的生机与活力、包容和机遇所吸引，愿意与深圳建立联系。因此，我们希望深圳商会可以成为各位与深圳联系的纽带，成为一个共同的精神家园。我也要衷心地感谢这些热情参与的专家与精英人士，商会能够顺利挂牌、开展活动，与诸位的关心与支持密不可分。\n下一步，商会将抓住以下“关键词”开展工作： \n1. 平台：大华府的优势是有人才，有政商资源；深圳的优势是有活力、有需求，商会将竭力成为两地取长补短，优势互补的平台；\n2. 凝聚：凝聚人才，凝聚项目， 凝聚资金，凝聚资源，让商会成为一个聚宝盆；\n3. 服务：服务商会会员企业，服务社区事务；\n4. 务实：讲实话 做实事 求实效，以实干赢未来；\n5. 共赢：如果能做到以上几点，共赢将是顺带的结果。\n 我坚信，一个是领先中国的一线城市，另一个则是包罗万象的发达国家，深圳与北美在互利互惠方面一定具有无比广阔的合作空间，这种合作也会给在座的各位带来数不尽的商业机会。希望更多志同道合的各行各业的朋友加入到我们的队伍。"
+
+export const partnerShips = [
+  {name:'Highland', logo:'/fake-logo-1.svg', link:'', intro:"Hiland has been a leader in global exchange for more than 30 years. Hiland has given thousands of students amazing opportunities to have powerful, life changing experiences in the USA. "},
+  {name:'海龙教育', logo:'/hailong.png', link:'http://www.seaedu.com.cn', intro:"Hailong Education Service Co., Ltd. is a global professional education service organization providing comprehensive solutions for the internationalization of education in China"},
+  {name:'GL Capital', logo:'/gl-logo.png', link:'', intro:""}
+]

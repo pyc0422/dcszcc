@@ -1,5 +1,5 @@
 'use client'
-import { Stack,Button, Box, Link, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
+import { Stack,Button, Link, Box, AppBar, Toolbar, Container, IconButton, Menu, MenuItem } from "@mui/material";
 import Image from "next/image";
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState} from 'react';
@@ -22,8 +22,8 @@ export default function Header () {
     <AppBar color="transparent" position="static">
       <Container maxWidth="xl" id="header">
         <Toolbar disableGutters sx={{margin:0}}>
-          <a className="w-1/3" href="/">
-           <Image src="/logo.png" priority alt="logo" width="300" height="40" className="w-full h-full md:w-4/5 md:h-4/5 object-cover"/>
+          <a href="/">
+           <Image src="/logo.png"  priority alt="logo" width="300" height="40" className="w-full h-full object-cover"/>
           </a>
           <Box sx={{flexGrow:1, display: {xs:'flex', md:'none',justifyContent:'flex-end'}}} >
             <IconButton
@@ -68,12 +68,13 @@ export default function Header () {
               key={i}
               href={`/${item[1]}`}
               sx={{
-                "&:hover": {bgcolor:"#9ac9f85f !important", fontWeight:800},
+                "&:hover": {bgcolor:"#9ac9f85f !important", color:'black !important'},
                 my: 2,
-                color:"#2b2b2b !important",
+                color:"#4f4f4e !important",
                 textAlign:"center",
                 display: 'block',
-                fontSize:'1.1em'
+                fontSize:'1.1em',
+                fontWeight:600
               }}>
               {item[0]}
             </Button>
