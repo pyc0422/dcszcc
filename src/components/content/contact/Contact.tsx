@@ -1,9 +1,7 @@
 import "./contact.css"
-import Typography from '@mui/material/Typography';
 import emailjs from '@emailjs/browser';
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Image from "next/image";
 
 
@@ -56,7 +54,7 @@ export default function Contact() {
 
 
   return (
-    <div className='m-[10px] p-0 max-w-[960px]' id="contact">
+    <div className='m-[10px] p-0 w-screen md:w-[960px]' id="contact">
       <div className="flex-center md:mt-28">
         <div className="w-[25px] h-[25px]">
           <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
@@ -69,7 +67,7 @@ export default function Contact() {
       {formSuccess ?
         <div>{formSuccessMessage}</div>
         :
-        <form  onSubmit={submitForm}>
+        <form onSubmit={submitForm} className="px-2 md:px-0">
           <div className='row-container'>
             <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row items-center">
               <label className='text-center pr-4'>
@@ -87,16 +85,41 @@ export default function Contact() {
 
           <div className='flex flex-col mt-4'>
             <label className='text-md font-normal'>消息</label>
-            <textarea name="message" className="p-2 h-[100px] md:h-[200px]" onChange={handleInput} placeholder=" Your Message"value={formData.message} />
+            <textarea name="message" className="p-2 h-[100px] md:h-[200px] rounded-md" onChange={handleInput} placeholder=" Your Message"value={formData.message} />
           </div>
-          <Grid container justifyContent="center" alignItems="center"  spacing={2} >
+          {/* <Grid container justifyContent="center" alignItems="center"  spacing={2} >
             <Grid item>
           <button className="custom-button" type="submit" >发送</button>
           </Grid>
            <Grid item>
           <button className="custom-button"  type="button" onClick={handleReset} >重置</button>
           </Grid>
-          </Grid>
+          </Grid> */}
+          <div className="flex flex-row">
+          <Button
+            variant="outlined"
+            fullWidth
+            onClick={handleReset}
+            sx={{
+              color:"#2a2a2b",
+              borderColor:"#2a2a2b",
+              margin:"1rem",
+              "&:hover":{
+                color:"black !important",
+                borderColor:"#101a30",
+              },
+            }}>重 置</Button>
+          <Button
+           fullWidth
+           variant="contained"
+           sx={{
+            margin:"1rem",
+            bgcolor:"#2a2a2b !important",
+            "&:hover":{color:'white !important'}
+            }}
+            type="submit"
+          >发 送</Button>
+          </div>
         </form>
       }
     </div>

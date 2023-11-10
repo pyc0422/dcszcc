@@ -85,7 +85,23 @@ body {
   height:100vh;
   overflow-x: hidden;
 }
-
+@media only screen and (min-width:900px){
+    #news {
+    width:100vw;
+    background: radial-gradient(
+      ellipse 100% 100% at 20% 13%,
+      #dedede 50%,
+      40%,
+      transparent 40%
+    ),
+    conic-gradient(
+      at 60% 43%,
+      #dedede 0.18turn,
+      transparent 0.18turn 0.845turn,
+      #dedede 0.845turn
+    );
+  }
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
