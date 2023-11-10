@@ -5,6 +5,7 @@ import Subscribe from '../../components/content/subscribe/Subscribe';
 import About from '../../components/content/about/About';
 import News from '../../components/content/news/News';
 import Contact from '../../components/content/contact/Contact';
+import Partners from '@/components/content/partner/Partners';
 
 export default function Page() {
 
@@ -12,11 +13,12 @@ export default function Page() {
     <>
       <div className='mb-[150px] md:mb-[300px] flex flex-col items-center'>
         <Subscribe />
-        <div className='max-w-[960px]'>
+
         <About />
         <News />
+        <Partners />
         <Contact />
-        </div>
+
 
        </div>
     <Footer/>
