@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import Image from "next/image";
+import Title from "@/components/utility/Title";
 
 
 
@@ -55,13 +56,7 @@ export default function Contact() {
 
   return (
     <div className='m-[10px] p-0 w-screen md:w-[960px]' id="contact">
-      <div className="flex-center md:mt-28">
-        <div className="w-[25px] h-[25px]">
-          <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
-        </div>
-        <span className="text-xl md:text-2xl p-2 font-serif_SC">联系我们 ｜ Contact</span>
-
-      </div>
+      <Title text="联系我们 ｜ Contact" custom="md:mt-28" />
       <div className="text-center md:mt-8 md:mb-16">Get in touch with us</div>
 
       {formSuccess ?

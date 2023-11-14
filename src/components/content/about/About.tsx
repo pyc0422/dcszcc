@@ -5,6 +5,7 @@ import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeli
 import Image from "next/image"
 import "./about.css"
 import Link from "next/link"
+import Title from "@/components/utility/Title"
 // import 'react-vertical-timeline-component/style.min.css';
 export default function About () {
   const {newsList} = useAppContext()
@@ -12,12 +13,7 @@ export default function About () {
   return (
     <section id="about" className="h-1/3 my-8 md:my-16 flex flex-col md:flex-row justify-between items-center max-w-[960px]">
       <div className="p-2 m-2 md:mx-0 md:w-1/2 md:mr-16">
-        <div className="flex-center md:mb-8">
-          <div className="w-[25px] h-[25px]">
-            <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
-          </div>
-          <span className="text-xl md:text-2xl p-2 font-serif_SC">关于我们 ｜ About</span>
-        </div>
+        <Title text="关于我们 ｜ About" custom="md:mb-8" />
         <p>2018年4月，美国大华府地区-中国深圳商会秉持“搭建美国大华府地区与中国深圳两地在各行业机构与人才的友好交流平台；促进两地长期商业深度合作交流；推进各行业创新创业项目互惠互利”的宗旨，推动两地专业人士业务交流和往来，也得到了参加人员的欢迎和充分认可。</p>
       </div>
       <div className="m-auto max-h-[650px] overflow-hidden w-full">
