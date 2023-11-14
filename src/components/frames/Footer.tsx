@@ -14,7 +14,7 @@ export default function Footer () {
         <Typography component="a" href="/partner" className="footer-title">合作伙伴</Typography>
         <div className="hidden md:flex flex-row items-center justify-center mt-4">
           {partners.slice(0,5).map((company) =>
-            <a key={company.id} title={company.name} href={company.link} className="hover:scale-110 hover:-translate-y-1 hover:duration-150 hover:delay-150 font-light text-sm p-2">
+            <a key={company.id} title={company.name} href={company.link} className="hover:scale-110 hover:-translate-y-1 ease-in-out duration-300 hover:duration-150 hover:delay-150 font-light text-sm p-2">
               <Image src={company.logo} alt={company.name} width={30} height={30}/>
             </a>
           )}
