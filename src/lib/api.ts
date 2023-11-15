@@ -1,4 +1,4 @@
-import { NewsType } from "@/utility/types";
+import { NewsType, PartnerType } from "@/utility/types";
 import { ErrorOutline } from "@mui/icons-material";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER || "http://localhost:3000";
@@ -96,7 +96,37 @@ export async function getPartners () {
     return error;
   }
 }
+export async function AddPartners (partner:PartnerType) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/partners`, {method:'POST', headers, body:JSON.stringify(partner)});
+    if (res) {
+      return res.json()
+    }
 
+  } catch(error) {
+    return error;
+  }
+}
+export async function UpdatePartner (partner:PartnerType) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/partners`, {method:'PUT', headers, body:JSON.stringify(partner)})
+    if (res) {
+      return res.json()
+    }
+  }catch (error) {
+    return error;
+  }
+}
+export async function DeletePartner (id:string) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/partners`, {method:'DELETE', headers, body:JSON.stringify({id})})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error;
+  }
+}
 
 
 //------------------> Opps <---------------------
