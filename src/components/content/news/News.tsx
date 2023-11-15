@@ -1,17 +1,27 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { useAppContext } from "@/components/AppContext"
 import { getImg, sortedArray } from "@/utility/functions";
 import Image from "next/image";
 import Link from 'next/link';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Title from '@/components/utility/Title';
+import { NewsType } from '@/utility/types';
 
 export default function News() {
   const {newsList} = useAppContext()
   const [activeIndex, setActiveIndex] = useState(0);
-  const topFive = sortedArray(newsList, 'time').slice(0, 5)
-  const images = topFive.map((news) => getImg(news.content)[0])
+  const [topFive, setTopFive]= useState<NewsType[]>([])
+  const [images, setImage] = useState<string[]>([])
 
+  useEffect(() => {
+    if (newsList) {
+      const five = sortedArray(newsList, 'time').slice(0, 5);
+      setTopFive(five);
+      const topImages = five.map((news) => getImg(news.content)[0])
+      setImage(topImages)
+    }
+  }, [])
   const handlePrev = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
@@ -21,16 +31,11 @@ export default function News() {
   return (
     <section id="news" className='flex-center'>
       <div className='max-w-[960px]'>
-      <div className="flex-center md:mt-24 md:mb-16">
-        <div className="w-[25px] h-[25px]">
-          <Image src="/p-logo.png" alt="logo" width={36} height={36} className="w-full h-full object-cover"/>
-        </div>
-        <span className="font-serif_SC text-xl md:text-2xl p-2">近期活动 ｜ News</span>
-      </div>
+      <Title text="近期活动 ｜ News" custom="md:mt-24 md:mb-16"/>
       <div className='flex flex-col md:flex-row justify-between items-center'>
         <div className='md:w-1/2 p-2 md:mr-16'>
           <ul >
-            {topFive.map((e) =>
+            {!topFive.length ? null :topFive.map((e) =>
                <li key={e.id} className='p-2 m-1 border border-1 border-gray-300 rounded-md pb-4'>
                 <div className='flex flex-row justify-between items-center'>
                   <div className="text-sm font-normal pb-1">{e.title}</div>
@@ -43,7 +48,7 @@ export default function News() {
                </li>
             )}
           </ul>
-          {newsList.length > 5 &&
+          {!newsList ? null : newsList.length > 5 &&
             <div className='flex justify-center mt-2'>
               <button  className='text-center outline outline-1 border-black py-1 px-8'>
                 <Link href="/articles">更多活动</Link>
@@ -55,7 +60,7 @@ export default function News() {
           <div onClick={handlePrev}>
             <ArrowLeftIcon fontSize="large" className='hover:text-black/50 hover:scale-125 hover:-translate-x-1 hoaver:duration-150 hover:deplay-150'/>
           </div>
-          {topFive.length &&
+          {images.length ?
             <Link href={`/articles/${topFive[activeIndex].id}`} className='h-full'>
               <Image
                src={images[activeIndex].slice(1, images[activeIndex].length - 1)}
@@ -63,7 +68,7 @@ export default function News() {
                alt={`Photo ${activeIndex + 1}`}
                className='object-cover w-full h-full rounded-lg'
             />
-            </Link>
+            </Link> : null
           }
           <div onClick={handleNext}>
             <ArrowRightIcon fontSize="large" className='hover:text-black/50 hover:scale-125 hover:translate-x-1 hoaver:duration-150 hover:deplay-150'/>

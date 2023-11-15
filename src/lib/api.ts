@@ -1,23 +1,11 @@
 import { NewsType } from "@/utility/types";
+import { ErrorOutline } from "@mui/icons-material";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER || "http://localhost:3000";
 
-// async function handleResponse<T>(response: Response): Promise<T> {
-//   const contentType = response.headers.get("Content-Type") || "";
-//   const isJson = contentType.includes("application/json");
-//   const data = isJson ? await response.json() : await response.text();
-//   if (!response.ok) {
-//     const message = isJson
-//       ? data.message || response.statusText
-//       : response.statusText;
-//     throw new Error(message);
-//   }
-
-//   return data as T;
-// }
-
 const headers = {"Content-Type": "application/json"}
 
+// ------------------> Admin Auth<---------------------
 export async function addUser (email:string) {
   // console.log('email in addUser:', email, SERVER_URL)
   try {
@@ -30,19 +18,6 @@ export async function addUser (email:string) {
     return error
   }
 }
-
-export async function sendWelcome (email:string) {
-  try {
-    const res = await fetch(`${SERVER_URL}/api/email`, { method: 'POST', headers, body:JSON.stringify({email})})
-    if (res) {
-      // console.log('res in sendWelcome', res)
-      return res.json()
-    }
-  } catch (error) {
-    return error
-  }
-}
-
 export async function logIn (email:string, password: string) {
   try {
     const res = await fetch(`${SERVER_URL}/api/auth/login`, {method:'POST', headers, body:JSON.stringify({email, password})})
@@ -53,7 +28,6 @@ export async function logIn (email:string, password: string) {
     return error
   }
 }
-
 export async function logOut () {
   try {
     const res = await fetch(`${SERVER_URL}/api/auth/logout`, {headers})
@@ -65,6 +39,41 @@ export async function logOut () {
   }
 }
 
+
+// ------------> Emails <------------------
+export async function sendWelcome (email:string) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/email`, { method: 'POST', headers, body:JSON.stringify({email})})
+    if (res) {
+      return res.json()
+    }
+  } catch (error) {
+    return error
+  }
+}
+
+
+// -----------------> News <-----------------
+export async function getAllNews () {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/news/all`, {headers})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
+  }
+}
+export async function getOneNews (news_id:string) {
+  try {
+    const res = await(fetch(`${SERVER_URL}/api/news/${news_id}`, {headers}))
+    if (res) {
+      return res.json()
+    }
+  }catch(error) {
+    return error
+  }
+}
 export async function addNews (new_news:NewsType) {
   try {
     const res = await fetch(`${SERVER_URL}/api/news/all`, {method:'POST', headers, body:JSON.stringify(new_news)})
@@ -76,24 +85,28 @@ export async function addNews (new_news:NewsType) {
   }
 }
 
-export async function getAllNews () {
+//-----------------> Partners <----------------
+export async function getPartners () {
   try {
-    const res = await fetch(`${SERVER_URL}/api/news/all`, {headers})
+    const res = await fetch(`${SERVER_URL}/api/partners`, {headers})
     if (res) {
       return res.json()
     }
   } catch(error) {
-    return error
+    return error;
   }
 }
 
-export async function getOneNews (news_id:string) {
+
+
+//------------------> Opps <---------------------
+export async function getOpps() {
   try {
-    const res = await(fetch(`${SERVER_URL}/api/news/${news_id}`, {headers}))
-    if (res) {
+    const res = await fetch(`${SERVER_URL}/api/opps`, {headers})
+    if(res) {
       return res.json()
     }
-  }catch(error) {
+  } catch(error) {
     return error
   }
 }

@@ -15,3 +15,16 @@ export type NewsType = {
   last_update_time?:Timestamp;
   author?:string
 }
+
+export type PartnerType = {
+  id:string;
+  name:string;
+  logo:string;
+  link:string;
+  intro:string;
+}
+
+export type OppType = {
+  id:string;
+  content:string;
+}

@@ -2,8 +2,8 @@ export const navItems:Array<Array<string>>= [
   ["首页", ""],
   ["关于我们","about"],
   ["新闻与活动","articles"],
-  ["会员企业", "#partners"],
-  ['合作机会',"#partners"],
+  ["会员企业", "partner"],
+  ['合作机会',"opps"],
   ["联系我们","#contact"]
 ]
 export const socialItems = [
@@ -12,13 +12,13 @@ export const socialItems = [
   ["/Twitter.png", ""]
 ]
 
-export const partners = [
-  {name: '中国xx商会1', link:"",logo:'/fake-logo-1.svg'},
-  {name: 'xx品牌', link:"", logo:'/fake-logo-2.svg'},
-  {name: '中国xx商会2', link:"", logo:'/fake-logo-3.svg'},
-  {name: 'xx品牌2', link:"", logo:'/fake-logo-4.svg'},
-  {name: '中国xx商会3', link:"", logo:'/fake-logo-5.svg'},
-]
+// export const partners = [
+//   {name: '中国xx商会1', link:"",logo:'/fake-logo-1.svg'},
+//   {name: 'xx品牌', link:"", logo:'/fake-logo-2.svg'},
+//   {name: '中国xx商会2', link:"", logo:'/fake-logo-3.svg'},
+//   {name: 'xx品牌2', link:"", logo:'/fake-logo-4.svg'},
+//   {name: '中国xx商会3', link:"", logo:'/fake-logo-5.svg'},
+// ]
 
 export const info = [
   {name: "商会地址", value: "8100 Boone Blvd, Suite 230, Vienna, VA 22182, USA "},
