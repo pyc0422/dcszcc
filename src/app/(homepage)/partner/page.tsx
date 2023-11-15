@@ -1,11 +1,20 @@
 'use client'
 import { useAppContext } from "@/components/AppContext"
+import Loading from "@/components/utility/Loading";
+import Title from "@/components/utility/Title";
 import Image from "next/image"
 export default function Page() {
-  const {partners} = useAppContext()
+  const {partners} = useAppContext();
+
   return (
     <div className="flex justify-center">
+
     <div className="max-w-[960px] flex flex-col py-2 my-8 justify-evenly items-center">
+      {!partners ? <Loading /> :
+       !partners.length ? <h1>暂时没有合作会员企业</h1>
+       :
+      <>
+      <Title text="会员企业 ｜ Partners" custom="md:mt-4 md:mb-8 mx-2"/>
       {partners.map((company) =>
         <div
           key={company.id}
@@ -17,11 +26,11 @@ export default function Page() {
             </div>
             <a href={company.link} className='capitalize self-center hover:underline font-medium text-lg'>{company.name}</a>
           </div>
-
           <div className='w-5/6 px-1'>{company.intro}</div>
-
         </div>
+
       )}
+      </>}
 
       <div className='fixed w-full bottom-0 left-0 text-center'>
         <p className='font-extralight text-xs text-slate-700'>

@@ -18,7 +18,7 @@ export default function About () {
       </div>
       <div className="m-auto max-h-[650px] overflow-hidden w-full">
       <VerticalTimeline>
-      {sortedArray(newsList, "important").map((e) =>
+      {!newsList || !newsList.length ? null : sortedArray(newsList, "important").map((e) =>
         <VerticalTimelineElement
           key={e.id}
           className="vertical-timeline-element-work"

@@ -10,10 +10,11 @@ const Partners = () => {
     <div className='h-96 mb-24' id="partners">
       <Title custom="md:mt-24 md:mb-16" text="会员企业 ｜ Membership"/>
       <div className='md:w-[960px] flex flex-wrap flex-row justify-evenly items-start'>
-        {partners.map((p, i) =>
+        {!partners ? null :
+        partners.map((p, i) =>
           <div
             key={i}
-            className='p-2 h-24 shadow-2xl rounded-md hover:h-80 ease-linear duration-150 w-48 border border-1 flex flex-col items-center justify-start'
+            className='p-2 h-24 shadow-2xl rounded-md hover:h-80 ease-linear duration-75 w-48 border border-1 flex flex-col items-center justify-start'
             onMouseEnter={() => setHover(i)}
             onMouseLeave={() => setHover(-1)}
           >

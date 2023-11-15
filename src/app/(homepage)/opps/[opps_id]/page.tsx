@@ -1,14 +1,13 @@
 "use client"
+import { getOneNews } from "@/lib/api"
 import { NewsType } from "@/utility/types"
 import { convertTimestamp } from "@/utility/functions"
 import React, { useEffect, useState } from "react"
-import Loading from "@/components/utility/Loading"
-import { useAppContext } from "@/components/AppContext"
 
-export default function Page ({ params }: { params: { article_id: string } }) {
+export default function Page ({ params }: { params: { opps_id: string } }) {
+
   const [isScrolled, setScrolled] = useState(false)
-  const { newsList } = useAppContext()
-  const [article, setArticle] = useState<NewsType>({id:"", author:"", title:"", news_date:"", content:"", important:false})
+
   const toggleScrolled = () => {
     document.body.scrollTop > 200 ? setScrolled(true) :setScrolled(false)
   }
@@ -17,23 +16,17 @@ export default function Page ({ params }: { params: { article_id: string } }) {
   }
   useEffect(() => {
     //add eventlistener to window
-    if (newsList && newsList.length) {
-      const cur = newsList.filter((news) => news.id === params.article_id)
-      if (cur) {
-        setArticle(cur[0])
-      }
-    }
     document.body.addEventListener("scroll", toggleScrolled, true);
     // remove event on unmount to prevent a memory leak with the cleanup
     return () => {
       document.body.removeEventListener("scroll", toggleScrolled, true);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newsList])
+  }, [])
   return (
     <div className="flex flex-col items-center min-h-screen">
     <div className="flex flex-col justify-center items-center p-2 md:m-4 max-w-[960px]" id="top">
-      {article.content.length ?
+      {/* {article.content.length ?
       <div className="p-4 md:m-6 w-full md:w-3/4 flex flex-col justify-between">
         <div>
         <h1 className="text-3xl font-bold text-center mb-8">{article.title}</h1>
@@ -49,8 +42,8 @@ export default function Page ({ params }: { params: { article_id: string } }) {
         </div>
       </div>
       :
-      <Loading />
-      }
+      <h1 className="mt-16">正在加载，请等待...</h1>
+      } */}
 
     </div>
     <div className='w-full bottom-0 left-0 text-center'>
