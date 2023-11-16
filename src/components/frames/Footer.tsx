@@ -15,7 +15,7 @@ export default function Footer () {
         <div className="hidden md:flex flex-row items-center justify-center mt-4">
           {!partners ? null : partners.slice(0,5).map((company) =>
             <a key={company.id} title={company.name} href={company.link} className="hover:scale-110 hover:-translate-y-1 ease-in-out duration-300 hover:duration-150 hover:delay-150 font-light text-sm p-2">
-              <Image src={company.logo} alt={company.name} width={30} height={30}/>
+              <Image src={company.logo} alt={company.name} unoptimized width={30} height={30} className='w-auto h-8'/>
             </a>
           )}
           {partners && partners.length > 5 ?
