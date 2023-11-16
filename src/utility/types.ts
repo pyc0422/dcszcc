@@ -15,3 +15,9 @@ export type NewsType = {
   last_update_time?:Timestamp;
   author?:string
 }
+
+export type PartnerType = Record<string, string>
+export type OppType = {
+  id:string;
+  content:string;
+}

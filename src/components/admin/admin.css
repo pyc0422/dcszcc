@@ -9,5 +9,13 @@
   .post_input {
     @apply  w-3/4 shadow border border-gray-400 px-2 py-1 bg-transparent
   }
-
+  .btn {
+    @apply px-8 py-1 text-sm
+  }
+  .light {
+    @apply border-gray-400 hover:bg-gray-800 hover:text-white
+  }
+  .dark {
+    @apply bg-gray-800 text-white hover:text-black/80 hover:bg-white hover:border hover:border-black/80
+  }
 }
