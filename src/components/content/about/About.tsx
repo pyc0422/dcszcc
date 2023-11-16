@@ -24,7 +24,7 @@ export default function About () {
           className="vertical-timeline-element-work"
           contentStyle={{ backgroundColor: "rgba(255,255,255, 0.5)", color: '#000' }}
           contentArrowStyle={{borderRight: '7px solid rgba(255,255,255,0.5)' }}
-          date={e.news_date.toString()}
+          date={e.news_date?.toString()}
           icon={<Image src="/p-logo.png" alt="icon" width={24} height={24} className="w-full h-full object-cover"/>}
         >
           <Link href={`/articles/${e.id}`}>

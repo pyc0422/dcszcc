@@ -22,7 +22,7 @@ export default function Page () {
             <li key={news.id} className="p-1 m-1">
               <div className="flex flex-row justify-between items-center border-b-2 border-gray-300 md:border-b-0">
                 <a className="w-2/3 hover:underline hover:opacity-60" href={`/articles/${news.id}`}>{news.title}</a>
-                <div className="w-1/3 text-right">{news.news_date.toString()}</div>
+                <div className="w-1/3 text-right">{news.news_date?.toString()}</div>
               </div>
             </li>
             )

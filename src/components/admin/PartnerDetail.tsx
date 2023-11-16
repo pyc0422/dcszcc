@@ -1,40 +1,25 @@
 import { PartnerType } from "@/utility/types";
-import React, {useState, useEffect, ChangeEvent} from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import Ad_Input from "./utils/Ad_Input";
 import { AddPartners, UpdatePartner } from "@/lib/api";
 import Swal from "sweetalert2";
-import { storage } from "../../../firebase";
-import {ref,getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import UploadImage from "./utils/UploadImg";
+
 const PartnerDetail = (
   {partners, setPartners, company, isEdit, toggleEdit}:
   { partners:PartnerType[],setPartners(partners:PartnerType[]):void,company:PartnerType,isEdit:boolean,toggleEdit(isEdit:boolean):void,}) => {
 
+  const [imgUrl, setImgUrl] = useState("")
   const [inputs, setInputs] = useState<PartnerType>({id:"", name:"", link:"", logo:"", intro:""})
   const elementArr = [{title:'企业名称',name:'name'}, {title:'官网链接', name:'link'}];
-  const [img, setImg] = useState<File | null>(null)
-  const [progress, setProgress] = useState(0)
+
   const handleInputChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const tag:string = e.target.name
     const val:string = e.target.value
     setInputs({...inputs, [tag]:val})
   }
 
-  const uploadImage = () => {
-    if (!img) return;
-    const storageRef = ref(storage, `partners/${img.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, img);
-    uploadTask.on('state_changed', (snapshot) => {
-      const progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100 );
-      console.log('upload is' + progress + '% done');
-      setProgress(progress);
-    }, (error) => {
-      console.log(error);
-    }, () => {
-      getDownloadURL(uploadTask.snapshot.ref)
-        .then(downloadURL => setInputs({...inputs, logo:downloadURL}))
-    })
-  }
   const handleSubmit = (e:React.MouseEvent) => {
     e.preventDefault();
     //check if current partner info changed or not
@@ -56,6 +41,7 @@ const PartnerDetail = (
        .then((res) => {
          if (res === 'updated') {
           Swal.fire("",`修改${inputs.name}成功！`);
+          //update current state without re-send request to server
           const updated = partners.map((p) => {
             if (p.id === inputs.id) {
               return inputs;
@@ -63,7 +49,6 @@ const PartnerDetail = (
               return p;
             }
           })
-          console.log('updated', updated);
           setPartners(updated);
           toggleEdit(false)
          }
@@ -82,7 +67,11 @@ const PartnerDetail = (
       setInputs(company)
     }
   },[company])
-
+  useEffect(() => {
+    if (imgUrl !== inputs.logo) {
+      setInputs({...inputs, logo:imgUrl})
+    }
+  }, [imgUrl])
   return (
     <div className="mt-8 md:mt-auto md:relative md:top-36 md:mx-auto p-2 md:border-2 md:w-4/5 max-w-[960px] md:h-[480px] md:shadow-lg md:rounded-md bg-white">
       <div
@@ -107,15 +96,7 @@ const PartnerDetail = (
             <Image src={inputs.logo} alt={`${inputs.name} logo`} unoptimized height={50} width={50} className='w-auto h-4/5'/>
             : null}
           </div>
-          <div className="flex flex-row mx-4 items-baseline">
-            <label htmlFor="logo" className='min-w-max px-2'>请选择上传新LOGO:</label>
-            <input
-            type="file" id="logo" name="logo" accept="image/*"
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setImg(e.target.files ? e.target.files[0] : null)}}
-            />
-          </div>
-          <button className="btn text-xs" onClick={uploadImage}>确认</button>
-          {progress === 100 ? <span className="ml-2 text-red-500"> 新logo上传成功！ 请提交进行保存！</span> : null}
+          <UploadImage folder="partners" label="请选择上传新LOGO图片" setImgUrl={setImgUrl}/>
         </div>
 
         <div className="flex flex-col p-1 m-2">
@@ -130,12 +111,10 @@ const PartnerDetail = (
             className='shadow h-24 border border-gray-400 px-2 py-1 bg-transparent'
           />
         </div>
-
         <div className="p-2 flex flex-row justify-around items-center" id="ptn_edit_btn_group">
           <button className="btn light px-12" onClick={handleSubmit}>提交</button>
           <button className="btn dark px-12" onClick={reset}>重置</button>
         </div>
-
       </div>
     </div>
   )

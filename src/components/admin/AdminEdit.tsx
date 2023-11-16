@@ -8,7 +8,7 @@ import Partner from "./Partner";
 import { Email } from "@mui/icons-material";
 import { logOut } from "../../lib/api";
 import { useRouter  } from "next/navigation";
-const labels = ["发布新内容","更换首页内容", "管理合作伙伴","群发邮件" ]
+const labels = ["发布新内容","管理发布内容", "管理合作伙伴","群发邮件" ]
 const elements = [<Post key={0} />, <Change key={1}/>, <Partner key={2}/>, <Email key={3}/>]
 
 export default function AdminEdit () {

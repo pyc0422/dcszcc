@@ -1,4 +1,4 @@
-import { NewsType, PartnerType } from "@/utility/types";
+import { NewsType, OppType, PartnerType } from "@/utility/types";
 import { ErrorOutline } from "@mui/icons-material";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER || "http://localhost:3000";
@@ -134,6 +134,17 @@ export async function getOpps() {
   try {
     const res = await fetch(`${SERVER_URL}/api/opps`, {headers})
     if(res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
+  }
+}
+
+export async function addOpp(newOpp : OppType) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/opps`, {method:'POST', headers, body:JSON.stringify(newOpp)})
+    if (res) {
       return res.json()
     }
   } catch(error) {
