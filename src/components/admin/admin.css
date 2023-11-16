@@ -10,7 +10,7 @@
     @apply  w-3/4 shadow border border-gray-400 px-2 py-1 bg-transparent
   }
   .btn {
-    @apply px-8 py-1 text-lg
+    @apply px-8 py-1 text-sm
   }
   .light {
     @apply border-gray-400 hover:bg-gray-800 hover:text-white
