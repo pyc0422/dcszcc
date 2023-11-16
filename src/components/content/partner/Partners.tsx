@@ -14,16 +14,16 @@ const Partners = () => {
         partners.map((p, i) =>
           <div
             key={i}
-            className='p-2 h-24 shadow-2xl rounded-md hover:h-80 ease-linear duration-75 w-48 border border-1 flex flex-col items-center justify-start'
+            className='p-2 h-24 shadow-2xl rounded-md hover:h-80 hover:max-h-max ease-linear duration-75 w-48 border border-1 flex flex-col items-center justify-start'
             onMouseEnter={() => setHover(i)}
             onMouseLeave={() => setHover(-1)}
           >
             <div className='h-[50px] flex items-center'>
-             <Image src={p.logo} unoptimized alt={p.name} height={50} width={50} className='w-auto h-4/5 obejct-cover'/>
+             <Image src={p.logo} unoptimized alt={p.name} height={50} width={50} className='w-auto h-4/5'/>
             </div>
             <div className='mt-2 font-medium text-xl'>{p.name}</div>
-            <div className={hover === i ? 'flex flex-col mt-4' : 'hidden'}>
-              <a href={p.link} className={p.link.length ? "mb-4 text-sm text-center" : 'hidden'}>
+            <div className={hover === i ? 'flex flex-col mt-2' : 'hidden'}>
+              <a href={p.link} className={p.link.length ? "mb-2 text-sm text-center" : 'hidden'}>
                 {'>>> '}<span className=" font-medium hover:underline">官方网站</span>{" <<<"}
               </a>
               <div className='mt-1 p-1'>{p.intro}</div>
