@@ -19,7 +19,7 @@ const Partners = () => {
             onMouseLeave={() => setHover(-1)}
           >
             <div className='h-[50px] flex items-center'>
-             <Image src={p.logo} alt={p.name} height={50} width={50}/>
+             <Image src={p.logo} unoptimized alt={p.name} height={50} width={50} className='w-auto h-4/5'/>
             </div>
             <div className='mt-2 font-medium text-xl'>{p.name}</div>
             <div className={hover === i ? 'flex flex-col mt-4' : 'hidden'}>
