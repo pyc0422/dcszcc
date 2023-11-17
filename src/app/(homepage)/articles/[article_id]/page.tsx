@@ -16,13 +16,14 @@ export default function Page ({ params }: { params: { article_id: string } }) {
     isScrolled && document.body.scrollTo({top:0,behavior:'smooth'})
   }
   useEffect(() => {
-    //add eventlistener to window
+
     if (newsList && newsList.length) {
       const cur = newsList.filter((news) => news.id === params.article_id)
       if (cur) {
         setArticle(cur[0])
       }
     }
+    //add eventlistener to window
     document.body.addEventListener("scroll", toggleScrolled, true);
     // remove event on unmount to prevent a memory leak with the cleanup
     return () => {
