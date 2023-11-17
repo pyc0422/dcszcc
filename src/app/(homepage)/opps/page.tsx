@@ -1,5 +1,6 @@
 'use client'
 import { useAppContext } from '@/components/AppContext';
+import Opp from '@/components/content/opp/Opp';
 import Loading from '@/components/utility/Loading';
 import React from 'react';
 
@@ -11,7 +12,7 @@ export default function Page () {
     return <h1>没有合作内容，请联系我们新增合作内容</h1>
   } else {
     return (
-      <div>THis suppose display the opportunities</div>
+      <Opp />
     )
   }
 }

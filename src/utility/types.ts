@@ -7,7 +7,7 @@ export type NewsType = {
   title:string;
   tags?:string | Array<string>;
   news_date:string;
-  important:boolean | string;
+  important?:boolean | string;
   bref?:string;
   content:string;
   notified?:boolean | string;
@@ -17,7 +17,12 @@ export type NewsType = {
 }
 
 export type PartnerType = Record<string, string>
+
 export type OppType = {
-  id:string;
+  id?:string;
+  title:string;
+  created_time?:Timestamp;
   content:string;
+  notified:boolean;
+  img?:string;
 }
