@@ -22,7 +22,7 @@ export default function News() {
       setImage(topImages)
     }
   }, [])
-  console.log('images',images, activeIndex)
+
   const handlePrev = () => {
     setActiveIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };

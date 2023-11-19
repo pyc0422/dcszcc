@@ -96,7 +96,7 @@ export async function updateNews (news:NewsType, news_id:string) {
 }
 export async function deleteNews (news_id:string) {
   try {
-    const res = await fetch(`${SERVER_URL}/api/news/${news_id}`, {method:'DELETE', headers, body:JSON.stringify({id:news_id})})
+    const res = await fetch(`${SERVER_URL}/api/news/${news_id}`, {method:'DELETE', headers})
     if (res) {
       return res.json()
     }
@@ -169,9 +169,9 @@ export async function addOpp(newOpp : OppType) {
     return error
   }
 }
-export async function updateOpp (partner:OppType) {
+export async function updateOpp (opp:OppType) {
   try {
-    const res = await fetch(`${SERVER_URL}/api/opps`, {method:'PUT', headers, body:JSON.stringify(partner)})
+    const res = await fetch(`${SERVER_URL}/api/opps`, {method:'PUT', headers, body:JSON.stringify(opp)})
     if (res) {
       return res.json()
     }

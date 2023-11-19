@@ -33,7 +33,7 @@ export async function PUT (request:Request) {
     const body = await request.json();
     const curRef = doc(firestore, "opps", body.id)
     delete body.id
-    await updateDoc(curRef, {body})
+    await updateDoc(curRef, {...body})
     return NextResponse.json('updated')
   } catch(error) {
     return NextResponse.json(error)
@@ -45,6 +45,7 @@ export async function DELETE (request:Request) {
   try {
     const body = await request.json();
     await deleteDoc(doc(firestore, "news", body.id))
+    return NextResponse.json("deleted")
   } catch(error) {
     return NextResponse.json(error)
   }

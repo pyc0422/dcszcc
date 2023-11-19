@@ -29,8 +29,8 @@ const UploadImage = ({folder, label, setImgUrl}
       onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setImg(e.target.files ? e.target.files[0] : null)}}
       />
     </div>
-    <button className="btn text-xs" onClick={uploadImage}>确认</button>
-    {progress === 100 ? <span className="ml-2 text-red-500"> 上传成功！请提交/发布进行保存！</span> : null}
+    {progress === 100 ? <span className="ml-2 text-red-500"> 上传成功！请提交/发布进行保存！</span>
+    :<button className="btn text-xs" onClick={uploadImage}>确认</button>}
     </>
   )
 }

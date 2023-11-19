@@ -37,7 +37,7 @@ export default function Change () {
        onClick={() => toggleOpen(false)}>x</div>
 
       <div className='px-2 mx-2  border-2  flex flex-col justify-evenly shadow-lg rounded-md'>
-          <Post values={selected} toggleOpen={toggleOpen}/>
+          <Post list={data} setList={setData} values={selected} toggleOpen={toggleOpen}/>
         </div>
         </div>
         </div>
