@@ -84,7 +84,27 @@ export async function addNews (new_news:NewsType) {
     return error
   }
 }
+export async function updateNews (news:NewsType, news_id:string) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/news/${news_id}`, {method:'PUT', headers, body:JSON.stringify(news)})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
+  }
+}
+export async function deleteNews (news_id:string) {
 
+  try {
+    const res = await fetch(`${SERVER_URL}/api/news/${news_id}`, {method:'DELETE', headers})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error
+  }
+}
 //-----------------> Partners <----------------
 export async function getPartners () {
   try {
@@ -140,7 +160,6 @@ export async function getOpps() {
     return error
   }
 }
-
 export async function addOpp(newOpp : OppType) {
   try {
     const res = await fetch(`${SERVER_URL}/api/opps`, {method:'POST', headers, body:JSON.stringify(newOpp)})
@@ -149,5 +168,25 @@ export async function addOpp(newOpp : OppType) {
     }
   } catch(error) {
     return error
+  }
+}
+export async function updateOpp (opp:OppType) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/opps`, {method:'PUT', headers, body:JSON.stringify(opp)})
+    if (res) {
+      return res.json()
+    }
+  }catch (error) {
+    return error;
+  }
+}
+export async function deleteOpp (id:string) {
+  try {
+    const res = await fetch(`${SERVER_URL}/api/opps`, {method:'DELETE', headers, body:JSON.stringify({id})})
+    if (res) {
+      return res.json()
+    }
+  } catch(error) {
+    return error;
   }
 }

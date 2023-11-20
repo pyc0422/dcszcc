@@ -1,4 +1,4 @@
-import {addDoc, collection, getDocs, Timestamp} from "firebase/firestore"
+import {doc,addDoc, collection, getDocs, Timestamp, updateDoc,deleteDoc} from "firebase/firestore"
 import { firestore } from "../../../../firebase";
 import { NextResponse } from "next/server";
 
@@ -22,6 +22,30 @@ export async function POST (request:Request) {
     console.log('opps post ', body);
     await addDoc(collection(firestore, "opps"), body)
     return NextResponse.json('added')
+  } catch(error) {
+    return NextResponse.json(error)
+  }
+}
+
+export async function PUT (request:Request) {
+
+  try {
+    const body = await request.json();
+    const curRef = doc(firestore, "opps", body.id)
+    delete body.id
+    await updateDoc(curRef, {...body})
+    return NextResponse.json('updated')
+  } catch(error) {
+    return NextResponse.json(error)
+  }
+
+}
+
+export async function DELETE (request:Request) {
+  try {
+    const body = await request.json();
+    await deleteDoc(doc(firestore, "opps", body.id))
+    return NextResponse.json("deleted")
   } catch(error) {
     return NextResponse.json(error)
   }

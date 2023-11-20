@@ -1,4 +1,5 @@
 import { Timestamp } from "firebase/firestore";
+import { StringMap } from "quill";
 
 export type AlertType =  {status: boolean; severity: 'error' | 'info' | 'success' | 'warning'; message: string};
 
@@ -13,7 +14,8 @@ export type NewsType = {
   notified?:boolean | string;
   created_time?:Timestamp | null;
   last_update_time?:Timestamp;
-  author?:string
+  author?:string;
+  img?:string;
 }
 
 export type PartnerType = Record<string, string>
@@ -26,3 +28,5 @@ export type OppType = {
   notified:boolean;
   img?:string;
 }
+
+export type NewsEditPropType = {type:string,values:NewsType | OppType | null}
