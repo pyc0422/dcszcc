@@ -1,7 +1,7 @@
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 import { Alert, Button } from "@mui/material"
-import { addUser, sendWelcome } from "../../../lib/api";
+import { addUser } from "../../../lib/api";
 import { useAppContext } from "../../../components/AppContext";
 import emailjs from '@emailjs/browser';
 export default function Subscribe () {
@@ -36,23 +36,6 @@ export default function Subscribe () {
     } catch(error) {
       console.error(error)
     }
-    // return addUser(email)
-    //  .then((data) => {
-    //   if (data === 'success') {
-    //     return emailjs.send(serviceId, templateId, {email}, publicKey)
-    //   } else {
-    //     setAlert ({status:true, severity:"warning", message:'Thank you. You already subscribed before'})
-    //     return 'warning'
-    //   }
-    //  })
-    //  .then((res) => {
-    //   if (typeof res === 'string') {
-    //     return
-    //   }
-    //   setEmail("")
-    //   setAlert({status:true, severity:"success", message:"Subsribe successfully"})
-    // })
-    //  .catch(err => console.error(err))
   }
   useEffect(() => {
     if (alert.status) {
