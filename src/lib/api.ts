@@ -40,18 +40,6 @@ export async function logOut () {
 }
 
 
-// ------------> Emails <------------------
-export async function sendWelcome (email:string) {
-  try {
-    const res = await fetch(`${SERVER_URL}/api/email`, { method: 'POST', headers, body:JSON.stringify({email})})
-    if (res) {
-      return res.json()
-    }
-  } catch (error) {
-    return error
-  }
-}
-
 
 // -----------------> News <-----------------
 export async function getAllNews () {
