@@ -91,6 +91,7 @@ export default function Post ({list, setList, values, toggleOpen}
         return values.type === 'news' ? deleteNews(cur_id) : deleteOpp(cur_id)
       }
     }).then((res) => {
+
       if (res === 'deleted') {
         Swal.fire("删除成功");
         if (!list) return;
@@ -100,7 +101,7 @@ export default function Post ({list, setList, values, toggleOpen}
     })
   }
   const onSubmit:SubmitHandler<NewsType> = (data) => {
-    console.log('post data:', data)
+    //console.log('post data:', data)
     if (!data.content){
       Swal.fire('内容为空',"","warning")
       return;
@@ -117,7 +118,7 @@ export default function Post ({list, setList, values, toggleOpen}
           }
         })
       } else if (postType === 'opps') {
-        console.log('post opps', data)
+        // console.log('post opps', data)
         let opp:OppType = {title: data.title, notified:data.notified ? true : false, content:data.content}
         if (imgUrl) {
           opp.img = imgUrl
@@ -131,7 +132,7 @@ export default function Post ({list, setList, values, toggleOpen}
         })
       }
     } else {
-      console.log('eles with values')
+      // console.log('eles with values')
       if (values.values && values.values.id){
         data.id = values.values.id
       } else {
@@ -139,7 +140,7 @@ export default function Post ({list, setList, values, toggleOpen}
       }
       if (values.type === 'news') {
         //update news
-        console.log('start updated news')
+        //console.log('start updated news')
         data.important = data.important === 'yes' ? true : false;
         updateNews(data, data.id)
          .then((res) => {
@@ -150,7 +151,7 @@ export default function Post ({list, setList, values, toggleOpen}
          })
       } else if (values.type === 'opps'){
         //update opps
-        console.log('start update opp')
+        //console.log('start update opp')
         updateOpp({id:data.id, title:data.title, content:data.content, notified:Boolean(data.notified), img:data.img})
         .then((res) => {
           if (res === 'updated') {

@@ -44,7 +44,7 @@ export async function PUT (request:Request) {
 export async function DELETE (request:Request) {
   try {
     const body = await request.json();
-    await deleteDoc(doc(firestore, "news", body.id))
+    await deleteDoc(doc(firestore, "opps", body.id))
     return NextResponse.json("deleted")
   } catch(error) {
     return NextResponse.json(error)

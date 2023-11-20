@@ -95,6 +95,7 @@ export async function updateNews (news:NewsType, news_id:string) {
   }
 }
 export async function deleteNews (news_id:string) {
+
   try {
     const res = await fetch(`${SERVER_URL}/api/news/${news_id}`, {method:'DELETE', headers})
     if (res) {
