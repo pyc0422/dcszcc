@@ -7,6 +7,7 @@ export function convertTimestamp(time:Timestamp) {
 }
 
 export function sortedArray (arr:NewsType[], type:string) {
+
   if (type ==='time') {
     return arr.sort((a:NewsType,b:NewsType) => (new Date(b.news_date).getTime()- new Date(a.news_date).getTime()))
   }
