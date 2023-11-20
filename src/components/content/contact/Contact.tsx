@@ -1,11 +1,11 @@
 import "./contact.css"
 import emailjs from '@emailjs/browser';
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Button from '@mui/material/Button';
 import Image from "next/image";
 import Title from "@/components/utility/Title";
-
-
+import Loading from "@/components/utility/Loading";
+import Swal from "sweetalert2";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -13,43 +13,42 @@ export default function Contact() {
     email: "",
     message: ""
   });
+  const [loading, setLoading] = useState(false);
 
-  const [formSuccess, setFormSuccess] = useState(false)
-  const [formSuccessMessage, setFormSuccessMessage] = useState("")
-
-  const handleInput = (e:any) => {
+  const handleInput = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const fieldName = e.target.name;
     const fieldValue = e.target.value;
-
     setFormData((prevState) => ({
       ...prevState,
       [fieldName]: fieldValue
     }));
   }
 
-  const submitForm = (e:any) => {
-    console.log(e.target.name);
-    console.log(e.target.email);
-    console.log(e.target.message);
+  const submitForm = async (e:React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     const serviceId:string= process.env.NEXT_PUBLIC_SERVICE_ID!;
     const templateId:string=process.env.NEXT_PUBLIC_TEMPLATE_ID!;
     const publicKey:string=process.env.NEXT_PUBLIC_PUBLIC_KEY!;
-     //emailjs.sendForm('service_nmw8i6s','template_f5lgqx5',e.target,'PzFIFuHM9Om215jxv')
-
-   emailjs.sendForm(serviceId, templateId,e.target,publicKey);
-
+   try {
+    setLoading(true)
+    await emailjs.sendForm(serviceId, templateId, '#contact_form',publicKey);
+    Swal.fire('发送成功',"感谢您的关注，我们将尽快恢复您的信息")
+   } catch(error){
+    console.log(error)
+   } finally {
+    handleReset()
+    setLoading(false)
+   }
     //const formURL = e.target.action
     const data = new FormData()
-
   }
 
-  const handleReset = (e:any) => {
+  const handleReset = () => {
     // Reset the input data to an empty string
     setFormData({
       name: "",
-    email: "",
-    message: ""
+      email: "",
+      message: ""
     });
   };
 
@@ -59,10 +58,10 @@ export default function Contact() {
       <Title text="联系我们 ｜ Contact" custom="md:mt-28" />
       <div className="text-center md:mt-8 md:mb-16">Get in touch with us</div>
 
-      {formSuccess ?
-        <div>{formSuccessMessage}</div>
+      {loading ?
+        <Loading />
         :
-        <form onSubmit={submitForm} className="px-2 md:px-0">
+        <form onSubmit={submitForm} className="px-2 md:px-0" id="contact_form">
           <div className='row-container'>
             <div className="md:w-1/2 flex flex-wrap flex-col md:flex-row items-center">
               <label className='text-center pr-4'>
@@ -82,14 +81,6 @@ export default function Contact() {
             <label className='text-md font-normal'>消息</label>
             <textarea name="message" className="p-2 h-[100px] md:h-[200px] rounded-md" onChange={handleInput} placeholder=" Your Message"value={formData.message} />
           </div>
-          {/* <Grid container justifyContent="center" alignItems="center"  spacing={2} >
-            <Grid item>
-          <button className="custom-button" type="submit" >发送</button>
-          </Grid>
-           <Grid item>
-          <button className="custom-button"  type="button" onClick={handleReset} >重置</button>
-          </Grid>
-          </Grid> */}
           <div className="flex flex-row">
           <Button
             variant="outlined"

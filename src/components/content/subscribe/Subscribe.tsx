@@ -1,16 +1,16 @@
 import Image from "next/image"
 import React, { useEffect, useState } from "react";
 import { Alert, Button } from "@mui/material"
-import { addUser, sendWelcome } from "../../../lib/api";
+import { addUser } from "../../../lib/api";
 import { useAppContext } from "../../../components/AppContext";
-
+import emailjs from '@emailjs/browser';
 export default function Subscribe () {
   const { alert, setAlert} = useAppContext()
   const [email, setEmail] = useState<string>("")
   const handleEmail = (e:React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
   }
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
 
     const expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     if (!email.length) {
@@ -21,23 +21,21 @@ export default function Subscribe () {
       setAlert({status:true, severity:"error", message:'Please provide valid email address'})
       return
     }
-    return addUser(email)
-     .then((data) => {
-      if (typeof data === 'string') {
+    const serviceId:string= process.env.NEXT_PUBLIC_SERVICE_ID!;
+    const templateId:string=process.env.NEXT_PUBLIC_SEND_TEMPLATE_ID!;
+    const publicKey:string=process.env.NEXT_PUBLIC_PUBLIC_KEY!;
+    try {
+      const res = await addUser(email)
+      if (res === 'success') {
+        await emailjs.send(serviceId, templateId, {email}, publicKey);
+        setAlert({status:true, severity:"success", message:"Subsribe successfully"})
         setEmail("")
-        return sendWelcome(email)
       } else {
         setAlert ({status:true, severity:"warning", message:'Thank you. You already subscribed before'})
-        return 'warning'
       }
-     })
-     .then((res) => {
-      if (res === 'warning') {
-        return
-      }
-      setAlert({status:true, severity:"success", message:"Subsribe successfully"})
-    })
-     .catch(err => console.error(err))
+    } catch(error) {
+      console.error(error)
+    }
   }
   useEffect(() => {
     if (alert.status) {
@@ -56,6 +54,7 @@ export default function Subscribe () {
         {alert.status ? <Alert severity={alert.severity} onClose={() => setAlert({...alert, status:false})}>{alert.message}</Alert> : null}
         <input
           name="email"
+          id="email"
           placeholder="输入您的邮箱进行订阅"
           value={email}
           onChange={handleEmail}
@@ -83,7 +82,7 @@ export default function Subscribe () {
             bgcolor:"#2a2a2b !important",
             "&:hover":{color:'white !important'}
             }}
-           onClick={handleSubscribe}
+           onClick={() => handleSubscribe()}
           >订阅资讯</Button>
         </div>
       </div>
