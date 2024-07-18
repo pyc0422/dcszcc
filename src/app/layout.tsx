@@ -8,7 +8,8 @@ const noto_serif_sc= Noto_Serif_SC({subsets:['latin'],weight:"900",display:'swap
 
 export const metadata: Metadata = {
   title: 'SZCC',
-  description: 'D.C Area - Shenzhe Chamber of Commerce',
+  description: 'D.C. Area - Shenzhen Chamber of Commerce',
+  keywords:['D.C. Area Chamber of Commerce', 'Shenzhen Chamber of Commerce', 'Next.js', 'React']
 }
 
 export default function RootLayout({
