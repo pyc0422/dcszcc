@@ -7,12 +7,12 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Title from "@/components/utility/Title";
 import { NewsType } from "@/utility/types";
-const defaultImg = "/logo-p.png";
+const defaultImg = "/p-logo.png";
 export default function News() {
   const { newsList } = useAppContext();
   const [activeIndex, setActiveIndex] = useState(0);
   const [topFive, setTopFive] = useState<NewsType[]>([]);
-  const [images, setImage] = useState<string[]>([]);
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
     if (newsList) {
@@ -22,9 +22,9 @@ export default function News() {
         const imgs = getImg(news.content);
         return imgs.length ? imgs[0] : defaultImg;
       });
-      setImage(topImages);
+      setImages(topImages);
     }
-  }, []);
+  }, [newsList]);
 
   const handlePrev = () => {
     setActiveIndex((prevIndex) =>
